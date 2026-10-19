@@ -7,6 +7,7 @@ Form text for the Dyre's Sounds CurseForge project.
 | Name | Dyre's Sounds |
 | Main category | Libraries |
 | License | MIT (code); the sounds are licensed from Envato, see README |
+| Logo | artwork/dyres-sounds-logo.png (1024 x 1024) |
 | Source | https://github.com/jbedworth/DyresSounds |
 | Issues | https://github.com/jbedworth/DyresSounds/issues |
 
