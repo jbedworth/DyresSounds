@@ -34,7 +34,11 @@ title: the folder, TOC, repository, and global use `DyresSounds`.
 - `Find`, `Resolve` (a saved key to the library's own; old MTF, WTF, and DSU
   keys are aliases), `Label`, `Parts`, `List(filter)`, `Groups(filter)`,
   `Play(key, speech, channel)`, `AuraSound(key)` (the `UnitAuraSoundInfo` file
-  fields), `Choices(filter)`, and `SetupMenu(initializer, filter)`. The filter
+  fields), `Choices(filter)`, `SetupMenu(initializer, filter)`, and
+  `SetupCheckboxMenu(initializer, filter)` (0.1.2: a row from Blizzard's
+  `CreateSettingsCheckboxDropdownInitializer`, whose Init sets up its own
+  dropdown, so the nested menu is built after it; pooled frames clear a stale
+  sound label as plain dropdowns do; additive, so contract 1 stays). The filter
   "aura" keeps only file sounds, the only ones `C_UnitAuras.AddAuraSound` takes.
 
 ### The catalog

@@ -88,3 +88,65 @@ function DyresSounds.SetupMenu(initializer, filter)
         return initFrame(self, frame)
     end
 end
+
+-- A checkbox and its sound on one row: Blizzard's checkbox-dropdown control
+-- (CreateSettingsCheckboxDropdownInitializer, as its Action Bars page uses).
+-- That control's Init calls Settings.InitDropdown itself, with no
+-- SetupDropdownMenu to replace, so the nested menu is built again after it.
+-- Its frames are pooled too: a frame that showed a sound clears that label
+-- before another checkbox-dropdown uses it, as the plain dropdown does.
+local function CheckboxDropdownInit(original)
+    return function(frame, initializer)
+        local dropdown = frame.Control and frame.Control.Dropdown
+        if not (initializer and initializer.dyresSoundsMenu)
+                and type(dropdown) == "table" and type(dropdown.SetSelectionText) == "function" then
+            dropdown:SetSelectionText(nil)
+        end
+        return original(frame, initializer)
+    end
+end
+
+-- Turns a row from CreateSettingsCheckboxDropdownInitializer(cbSetting, ...,
+-- soundSetting, DyresSounds.Choices(filter), ...) into a checkbox with the
+-- nested sound menu. Without the client's menu hooks the plain list stays.
+function DyresSounds.SetupCheckboxMenu(initializer, filter)
+    if type(initializer) ~= "table" or type(initializer.InitFrame) ~= "function"
+        or type(initializer.data) ~= "table" or type(initializer.data.dropdownSetting) ~= "table"
+        or type(Settings) ~= "table" or type(Settings.InitDropdown) ~= "function" then
+        return
+    end
+    initializer.dyresSoundsMenu = {filter = filter}
+    local setting = initializer.data.dropdownSetting
+    initializer.getSelectionTextFunc = function()
+        return DyresSounds.Label(setting:GetValue()) or ""
+    end
+    local initFrame = initializer.InitFrame
+    function initializer:InitFrame(frame)
+        if type(frame.Init) == "function" and not frame.dyresSoundsCheckboxMenu then
+            frame.dyresSoundsCheckboxMenu = true
+            frame.Init = CheckboxDropdownInit(frame.Init)
+        end
+        local result = initFrame(self, frame)
+        local control = frame.Control
+        local dropdown = type(control) == "table" and control.Dropdown
+        if type(dropdown) == "table" then
+            local initTooltip
+            if type(Settings.CreateOptionsInitTooltip) == "function" then
+                initTooltip = Settings.CreateOptionsInitTooltip(setting, self.data.dropDownLabel,
+                    self.data.dropDownTooltip, self.data.dropdownOptions)
+            end
+            Settings.InitDropdown(dropdown, setting, MenuInserter(filter), initTooltip)
+            if type(dropdown.SetSelectionText) == "function" then
+                dropdown:SetSelectionText(self.getSelectionTextFunc)
+            end
+            if type(dropdown.UpdateToMenuSelections) == "function" and type(dropdown.GetMenuDescription) == "function" then
+                dropdown:UpdateToMenuSelections(dropdown:GetMenuDescription())
+            end
+            -- A menu of submenus has no single list to step through.
+            if type(control.SetSteppersShown) == "function" then
+                control:SetSteppersShown(false)
+            end
+        end
+        return result
+    end
+end

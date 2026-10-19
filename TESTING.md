@@ -41,3 +41,6 @@ which shipped the same sounds:
 - [ ] `/run DyresSounds.Play("magical")` plays Magical disappear.
 - [ ] A dependent AddOn's sound dropdown shows Dyre's Picks first, plays a
       sound when chosen, and shows the full label.
+- [ ] A dependent's checkbox-and-sound row (Dyre's Buff Reminders' chimes)
+      shows the checkbox and the sound on one line, with the nested menu, the
+      full label, and no arrows; turning the checkbox off greys the sound.

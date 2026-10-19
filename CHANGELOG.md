@@ -4,6 +4,10 @@ Player-facing changes for each Dyre's Sounds release, newest first. The
 release builder copies the section for the TOC version into the GitHub release
 notes and the CurseForge changelog, and fails if that section is missing.
 
+## 0.1.2-beta
+
+- For AddOn authors: a checkbox and its sound can share one settings row (`SetupCheckboxMenu`), with the nested sound menu.
+
 ## 0.1.1-beta
 
 - Fixed: other AddOns' settings dropdowns could show a Dyre's Sounds label (such as "Dyre's Picks: Disappear") instead of their own choice.

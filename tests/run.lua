@@ -233,6 +233,61 @@ test("without the client's menu hooks the plain list stays", function()
     state.lib.SetupMenu(initializer)
     equal(initializer.dyresSoundsMenu, nil)
     state.lib.SetupMenu(nil)
+    local row = {InitFrame = function() end, data = {dropdownSetting = {}}}
+    state.lib.SetupCheckboxMenu(row)
+    equal(row.dyresSoundsMenu, nil, "a checkbox row keeps its plain list too")
+end)
+
+-- A checkbox-dropdown row as Blizzard's control builds it: Init initializes the
+-- dropdown with the plain list; the dropdown stores its selection text function.
+local function checkboxRow(soundSetting)
+    local initializer = {data = {dropdownSetting = soundSetting, dropDownLabel = "Sound"}}
+    function initializer:InitFrame(frame) frame:Init(self) end
+    local dropdown = {}
+    function dropdown:SetSelectionText(selectionFunc) self.selectionFunc = selectionFunc end
+    function dropdown:GetMenuDescription() return "menu" end
+    function dropdown:UpdateToMenuSelections(menu) self.updated = menu end
+    local frame = {Control = {Dropdown = dropdown}, inits = 0}
+    function frame.Control:SetSteppersShown(shown) self.steppers = shown end
+    function frame:Init(row)
+        self.inits = self.inits + 1
+        if row.getSelectionTextFunc then dropdown:SetSelectionText(row.getSelectionTextFunc) end
+        self.Control:SetSteppersShown(true)
+    end
+    return initializer, frame, dropdown
+end
+
+test("a checkbox row gets the nested sound menu, its full label, and no steppers", function()
+    local state = fixture()
+    local value = "magical"
+    local setting = {GetValue = function() return value end, SetValue = function(_, v) value = v end}
+    local row, frame, dropdown = checkboxRow(setting)
+    state.lib.SetupCheckboxMenu(row, "aura")
+    row:InitFrame(frame)
+    equal(frame.inits, 1, "Blizzard's Init still runs")
+    equal(state.inserted.button, dropdown, "the nested menu is built after Init")
+    equal(state.inserted.setting, setting)
+    local root = menuRoot()
+    state.inserted.inserter(setting, root)
+    equal(names(root.entries), "Dyre's Picks,Imp,Hellish imp", "the filter is kept")
+    equal(dropdown.selectionFunc(), "Dyre's Picks: Magical disappear")
+    equal(dropdown.updated, "menu", "the label is refreshed")
+    equal(frame.Control.steppers, false, "no steppers through a menu of submenus")
+end)
+test("a pooled checkbox row that showed a sound never keeps its label for another row", function()
+    local state = fixture()
+    local value = "magical"
+    local setting = {GetValue = function() return value end, SetValue = function(_, v) value = v end}
+    local row, frame, dropdown = checkboxRow(setting)
+    state.lib.SetupCheckboxMenu(row)
+    row:InitFrame(frame)
+    equal(dropdown.selectionFunc(), "Dyre's Picks: Magical disappear")
+    local plain = {data = {}}
+    frame:Init(plain)
+    equal(dropdown.selectionFunc, nil, "another AddOn's checkbox row on that frame shows its own choice")
+    row:InitFrame(frame)
+    frame:Init(plain)
+    equal(frame.inits, 4, "wrapped once, even when the frame is reused")
 end)
 
 local failed = 0
