@@ -49,6 +49,14 @@ local function NestedSetupDropdownMenu(original)
     return function(control, button, setting, options, initTooltip, initializer)
         local menu = initializer and initializer.dyresSoundsMenu
         if not menu then
+            -- The frame is pooled: Blizzard sets a dropdown's selection text only
+            -- when the initializer has getSelectionTextFunc and never clears it
+            -- (SettingsDropdownControlMixin:InitDropdown), so a frame that once
+            -- showed a sound would keep showing that sound's label (found in
+            -- client). Blizzard sets it again after this for a dropdown that has one.
+            if type(button) == "table" and type(button.SetSelectionText) == "function" then
+                button:SetSelectionText(nil)
+            end
             return original(control, button, setting, options, initTooltip, initializer)
         end
         Settings.InitDropdown(button, setting, MenuInserter(menu.filter), initTooltip)

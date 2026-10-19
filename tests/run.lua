@@ -207,6 +207,25 @@ test("a dropdown gets the plain list and the nested menu; other dropdowns keep t
     frame.SetupDropdownMenu(nil, "button", setting, nil, nil, {})
     equal(blizzard, 2, "wrapped once, even when the frame is reused")
 end)
+test("a pooled dropdown frame that showed a sound never keeps its label for another dropdown", function()
+    local state = fixture()
+    local value = "magical"
+    local setting = {GetValue = function() return value end, SetValue = function(_, v) value = v end}
+    local initializer = {}
+    function initializer:GetSetting() return setting end
+    function initializer:InitFrame() end
+    state.lib.SetupMenu(initializer)
+    -- Blizzard's dropdown: it stores the selection text function and never clears it.
+    local dropdown = {}
+    function dropdown:SetSelectionText(selectionFunc) self.selectionFunc = selectionFunc end
+    local frame = {SetupDropdownMenu = function() end}
+    initializer:InitFrame(frame)
+    frame.SetupDropdownMenu(nil, dropdown, setting, nil, nil, initializer)
+    dropdown:SetSelectionText(initializer.getSelectionTextFunc)
+    equal(dropdown.selectionFunc(), "Dyre's Picks: Magical disappear", "the sound dropdown shows its full label")
+    frame.SetupDropdownMenu(nil, dropdown, {}, nil, nil, {})
+    equal(dropdown.selectionFunc, nil, "the next, plain dropdown on that frame does not show the sound's label")
+end)
 test("without the client's menu hooks the plain list stays", function()
     local state = fixture()
     state.env.Settings.InitDropdown = nil
