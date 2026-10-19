@@ -47,8 +47,7 @@ title: the folder, TOC, repository, and global use `DyresSounds`.
   file, never a game sound by path (RaidWarning.ogg stayed silent).
 - Dyre's Picks are licensed to Vertiso Corporation from Envato (Elements and
   AudioJungle); the author's license allows every project. The license files
-  stay local in docs/licenses/ (ignored by Git); the sounds are not under the
-  MIT License. New sounds join Dyre's Picks over time: add the file, its
+  stay local in docs/licenses/ (ignored by Git). New sounds join Dyre's Picks over time: add the file, its
   catalog line, and its MEDIA_FILES entry (a test checks they match).
 
 ## Project structure
@@ -59,8 +58,10 @@ title: the folder, TOC, repository, and global use `DyresSounds`.
 - README.md is the user-facing overview, TESTING.md the verification method,
   docs/RELEASE_PLAN.md the release process, docs/CURSEFORGE_LISTING.md the
   CurseForge form text, and CHANGELOG.md the per-release change list.
-- The project uses the MIT License for code. The public author name is `Dyre`;
-  LICENSE keeps the legal name, John Bedworth.
+- All Rights Reserved (author-approved, as the author sees boss mods do, to protect the
+  sounds; the author's other AddOns are MIT): LICENSE grants only download and
+  use, and the release builder requires its exact text. The public author name
+  is `Dyre`; LICENSE keeps the legal name, John Bedworth.
 - The TOC uses `## Category: Libraries`; keep it identical to the CurseForge
   main category.
 - Git origin: git@github.com:jbedworth/DyresSounds.git (public).

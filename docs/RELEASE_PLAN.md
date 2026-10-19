@@ -68,7 +68,7 @@ Validate the actual archive, not only the staging folder:
 2. Reject absolute paths, traversal paths, symlinks, and extra root folders.
 3. Verify the TOC name, Interface `16001`, and Catalog/Sounds/Menu load order. Every listed runtime file must exist inside the archive.
 4. Verify the packaged version matches the selected tag, with one leading `v`
-   removed. Verify the packaged MIT copyright/permission notice is intact.
+   removed. Verify the packaged All Rights Reserved notice is intact.
 5. Check the packaged Lua files with Lua 5.1 syntax validation.
 6. Produce a SHA-256 checksum outside the installable ZIP.
 
@@ -235,7 +235,7 @@ Do not use a blind workflow rerun as a recovery procedure. See
 
 ### Project pages
 
-- [ ] Create or update the CurseForge project, with MIT and the usage description.
+- [ ] Create or update the CurseForge project, with All Rights Reserved and the usage description.
 - [ ] Confirm Forever `1.60.1` is available in the current file-version choices
       and API. Record the exact version ID and its Forever game-version type.
       Do not substitute Retail, Classic, a nearby version, or an untested build.

@@ -6,7 +6,7 @@ Form text for the Dyre's Sounds CurseForge project.
 |---|---|
 | Name | Dyre's Sounds |
 | Main category | Libraries |
-| License | MIT (code); the sounds are licensed from Envato, see README |
+| License | All Rights Reserved |
 | Logo | artwork/dyres-sounds-logo.png (1024 x 1024) |
 | Source | https://github.com/jbedworth/DyresSounds |
 | Issues | https://github.com/jbedworth/DyresSounds/issues |
@@ -27,4 +27,4 @@ The sounds and sound picker that Dyre's AddOns share, for World of Warcraft: For
 ### Compatibility
 Beta, for the Forever beta client 1.60.1. WowUp users (2.24.0 or later): install from the repository URL; GitHub releases carry the Forever metadata WowUp needs.
 
-Source, issues, and license (MIT): https://github.com/jbedworth/DyresSounds
+Source and issues: https://github.com/jbedworth/DyresSounds (all rights reserved; see LICENSE)

@@ -56,27 +56,20 @@ VERSION_RE = re.compile(
     r"(?:\+[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?",
     re.ASCII,
 )
-MIT_NOTICE = '''MIT License
+LICENSE_NOTICE = '''All Rights Reserved
 
-Copyright (c) 2026 John Bedworth
+Dyre's Sounds
+Copyright (c) 2026 John Bedworth. All rights reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+You may download and install this AddOn from its official pages (CurseForge
+and GitHub) and use it with World of Warcraft. No other right is granted: you
+may not copy, modify, redistribute, or reuse its code or its sound files, in
+whole or in part, without the author's written permission.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+The sound files in Sounds/ are licensed from Envato for use in this AddOn.
+They may not be extracted or reused outside it.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.'''
+THIS ADDON IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.'''
 
 
 def validate_version(version):
@@ -183,8 +176,8 @@ def _validate_files(files, expected_version=None):
         raise ValueError("Archive version does not match expected version")
     if loads != list(RUNTIME_FILES):
         raise ValueError("TOC must load " + ", ".join(RUNTIME_FILES) + " in that exact order")
-    if " ".join(texts["LICENSE"].split()) != " ".join(MIT_NOTICE.split()):
-        raise ValueError("LICENSE must preserve the MIT terms and 2026 John Bedworth notice")
+    if " ".join(texts["LICENSE"].split()) != " ".join(LICENSE_NOTICE.split()):
+        raise ValueError("LICENSE must keep the All Rights Reserved notice for 2026 John Bedworth")
     # Category and icon are preserved byte-for-byte; they are not client support gates.
     return version
 

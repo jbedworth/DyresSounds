@@ -331,9 +331,10 @@ class ReleaseTests(unittest.TestCase):
 
     def test_license_terms_and_copyright(self):
         for before, after in ((b"John Bedworth", b"Someone Else"), (b"2026", b"2025"),
-                              (b"Permission is hereby granted", b"No permission"),
-                              (b'THE SOFTWARE IS PROVIDED "AS IS"', b"WARRANTY"),
-                              (b"copies or substantial portions of the Software.", b"")):
+                              (b"Copyright (c) 2026 John Bedworth. All rights reserved.", b""),
+                              (b"No other right is granted", b"Every right is granted"),
+                              (b"may not be extracted or reused outside it.", b""),
+                              (b'PROVIDED "AS IS"', b"WARRANTY")):
             with self.subTest(before=before):
                 files = self.files()
                 files["LICENSE"] = files["LICENSE"].replace(before, after)

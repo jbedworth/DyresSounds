@@ -45,7 +45,7 @@ class CurseForgeTests(unittest.TestCase):
         (source / "DyresSounds.toc").write_bytes(
             (f"## Interface: 16001\n## Version: {version}\n"
              + "\n".join(builder.RUNTIME_FILES) + "\n").encode("utf-8"))
-        (source / "LICENSE").write_bytes(builder.MIT_NOTICE.encode("utf-8"))
+        (source / "LICENSE").write_bytes(builder.LICENSE_NOTICE.encode("utf-8"))
         for name in builder.RUNTIME_FILES:
             (source / name).write_bytes(b"local _, ns = ...\n")
         for name in builder.MEDIA_FILES:

@@ -24,6 +24,6 @@ carry the Forever metadata WowUp needs.
 
 ## License
 
-The code is MIT licensed. The sounds in `Sounds/` are licensed to the author
-from Envato and are not covered by the MIT License; use them only as part of
-this AddOn.
+All rights reserved: you may install and use Dyre's Sounds, but not copy,
+change, or reuse its code or sounds. The sounds in `Sounds/` are licensed from
+Envato for use in this AddOn only. See LICENSE.
