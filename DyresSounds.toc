@@ -1,0 +1,11 @@
+## Interface: 16001
+## Title: Dyre's Sounds
+## Notes: Sounds and a sound picker shared by Dyre's AddOns for WoW Forever
+## Author: Dyre
+## Version: 0.1.0-beta
+## IconTexture: Interface\Icons\INV_Misc_Bell_01
+## Category: Libraries
+
+Catalog.lua
+Sounds.lua
+Menu.lua
