@@ -22,6 +22,10 @@ For the Forever beta client 1.60.1 (Interface 16001). WowUp users
 (2.24.0 or later) can install it from the repository URL; GitHub releases
 carry the Forever metadata WowUp needs.
 
+## Support
+
+Dyre's AddOns are free. If you enjoy them, you can support them on Ko-fi: https://ko-fi.com/dyre_janelle
+
 ## License
 
 All rights reserved: you may install and use Dyre's Sounds, but not copy,

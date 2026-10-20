@@ -10,6 +10,7 @@ Form text for the Dyre's Sounds CurseForge project.
 | Logo | artwork/dyres-sounds-logo.png (1024 x 1024) |
 | Source | https://github.com/jbedworth/DyresSounds |
 | Issues | https://github.com/jbedworth/DyresSounds/issues |
+| Donation | Ko-fi, https://ko-fi.com/dyre_janelle (the project's Donation field) |
 
 ## Summary
 
