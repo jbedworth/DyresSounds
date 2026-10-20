@@ -18,7 +18,7 @@ without it, they play no sounds and say once in chat what to install.
 
 ## Compatibility
 
-Beta, for the Forever beta client 1.60.1 (Interface 16001). WowUp users
+For the Forever beta client 1.60.1 (Interface 16001). WowUp users
 (2.24.0 or later) can install it from the repository URL; GitHub releases
 carry the Forever metadata WowUp needs.
 
