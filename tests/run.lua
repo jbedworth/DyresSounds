@@ -106,7 +106,7 @@ test("the library is the global DyresSounds behind a contract", function()
 end)
 test("Dyre's Picks come first, then the game's groups; keys are unique", function()
     local lib = fixture({voice = true}).lib
-    equal(names(lib.Groups()), "Dyre's Picks,Interface,Animals,Devices,Impacts,Instruments,Short,"
+    equal(names(lib.Groups()), "Dyre's Picks,Interface,Animals,Devices,Impacts,Instruments,"
         .. "Warcraft 2,Warcraft 3,Imp,Hellish imp,Text to Speech")
     equal(#lib.Groups()[1].sounds, 9)
     local seen = {}
@@ -114,7 +114,7 @@ test("Dyre's Picks come first, then the game's groups; keys are unique", functio
         equal(seen[sound.key], nil, "unique key " .. sound.key)
         seen[sound.key] = true
     end
-    equal(#lib.List(), 9 + 9 + 93 + 13 + 1, "a SOUNDKIT name the client lacks is left out")
+    equal(#lib.List(), 9 + 9 + 67 + 13 + 1, "a SOUNDKIT name the client lacks is left out")
 end)
 test("without a voice there is no Text to Speech", function()
     local lib = fixture().lib
@@ -132,6 +132,14 @@ test("keys saved before the library still find their sound", function()
     equal(lib.Resolve("kazoo"), nil)
     equal(lib.Resolve(nil), nil)
     equal(lib.Label("magical"), "Dyre's Picks: Magical disappear")
+end)
+test("the Short sounds (missing on Forever) are gone", function()
+    local lib = fixture().lib
+    equal(lib.Find("shortbellstrike"), nil)
+    equal(lib.Resolve("shortbellstrike"), nil, "a saved Short key no longer resolves")
+    for _, sound in ipairs(lib.List()) do
+        equal(sound.label:find("^Short:") == nil, true, "no Short sound is offered")
+    end
 end)
 
 -- Playing ---------------------------------------------------------------------------
@@ -196,7 +204,7 @@ test("a dropdown gets the plain list and the nested menu; other dropdowns keep t
     equal(blizzard, 1)
     local root = menuRoot()
     state.inserted.inserter(setting, root)
-    equal(names(root.entries), "Dyre's Picks,Interface,Animals,Devices,Impacts,Instruments,Short,"
+    equal(names(root.entries), "Dyre's Picks,Interface,Animals,Devices,Impacts,Instruments,"
         .. "Warcraft 2,Warcraft 3,Imp,Hellish imp")
     local picks = root.entries[1]
     equal(picks.entries[5].text, "Magical disappear", "names inside their group")

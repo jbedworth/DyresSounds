@@ -9,7 +9,7 @@ one of Dyre's AddOns asks for it.
 - **Dyre's Picks:** nine effect sounds that ship with it (fading, swoosh,
   vanish, and magical disappear sounds), first in every sound menu.
 - The game's interface sounds, the Cooldown Manager's alert sounds in its
-  categories (Animals, Devices, Impacts, Instruments, Short, Warcraft 2,
+  categories (Animals, Devices, Impacts, Instruments, Warcraft 2,
   Warcraft 3), imp laughs and chirps, and Text to Speech.
 - A sound menu grouped like the Cooldown Manager's; choosing a sound plays it.
 

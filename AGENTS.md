@@ -72,7 +72,7 @@ title: the folder, TOC, repository, and global use `DyresSounds`.
 
 ## Client and API verification
 
-- Target: Forever beta 1.60.1, build 70338, Interface 16001, Lua 5.1. Pin
+- Target: Forever beta 1.60.1, build 70450 (tested in client, 2026-10-19; Interface still 16001), Lua 5.1. Pin
   source review to Gethe/wow-ui-source commit
   `943764493e6b16d63ded3ab304150d1f05e58b57`.
 - Gate only on required APIs, never on client version, build, or class.
