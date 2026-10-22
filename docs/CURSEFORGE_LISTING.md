@@ -14,7 +14,7 @@ Form text for the Dyre's Sounds CurseForge project.
 
 ## Summary
 
-The sounds and sound picker that Dyre's AddOns share, for World of Warcraft: Forever
+The sounds and sound picker that Dyre's AddOns share, for World of Warcraft: Forever.
 
 ## Description
 
