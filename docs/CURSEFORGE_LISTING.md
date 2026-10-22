@@ -18,7 +18,7 @@ The sounds and sound picker that Dyre's AddOns share, for World of Warcraft: For
 
 ## Description
 
-**Dyre's Sounds** holds the sounds and the sound menu that Dyre's AddOns share. It is a library: it does nothing on its own. Install it when one of Dyre's AddOns asks for it; the CurseForge app installs it for you.
+**Dyre's Sounds** holds the sounds and the sound menu that Dyre's AddOns share. It is a library: it does nothing on its own. Dyre's Shields Up and Dyre's Buff Reminders use it, and the CurseForge app installs it with them.
 
 ### What it has
 - **Dyre's Picks:** nine effect sounds that ship with it, first in every sound menu.
@@ -26,6 +26,6 @@ The sounds and sound picker that Dyre's AddOns share, for World of Warcraft: For
 - A sound menu grouped like the Cooldown Manager's; choosing a sound plays it.
 
 ### Compatibility
-For the Forever beta client 1.60.1. WowUp users (2.24.0 or later): install from the repository URL; GitHub releases carry the Forever metadata WowUp needs.
+For World of Warcraft: Forever 1.60.1 (tested on build 70450). WowUp users (2.24.0 or later): install from the repository URL; GitHub releases carry the Forever metadata WowUp needs.
 
 Source and issues: https://github.com/jbedworth/DyresSounds (all rights reserved; see LICENSE)
