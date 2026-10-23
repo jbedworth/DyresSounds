@@ -4,6 +4,15 @@ Player-facing changes for each Dyre's Sounds release, newest first. The
 release builder copies the section for the TOC version into the GitHub release
 notes and the CurseForge changelog, and fails if that section is missing.
 
+## 1.1.0
+
+### Features
+- 22 new sounds, in four new groups after Dyre's Picks:
+  - **Dyre's Speed:** speed boosts, a power-up, engine revs, a car zooming by, and a spaceship slowing down, for travel and sprint spells.
+  - **Dyre's Cats:** a kitty meow, an angry cat, a child's tiger grrr, a tiger growl, and a lion roar.
+  - **Dyre's Bears:** a little kid's roar, a cartoon bad bear, a bear roar, a monster bear, and a big monster roar.
+  - **Dyre's Water:** a dive, a fish splash, a fish swimming by, and a walrus roar.
+
 ## 1.0.0
 
 The first full release for WoW: Forever, no longer marked beta: it was play tested on the Forever beta client 1.60.1, build 70450. CurseForge now offers it as a release, so the app updates it and installs what it needs for every player.

@@ -51,8 +51,11 @@ title: the folder, TOC, repository, and global use `DyresSounds`.
   file, never a game sound by path (RaidWarning.ogg stayed silent).
 - Dyre's Picks are licensed to Vertiso Corporation from Envato (Elements and
   AudioJungle); the author's license allows every project. The license files
-  stay local in docs/licenses/ (ignored by Git). New sounds join Dyre's Picks over time: add the file, its
-  catalog line, and its MEDIA_FILES entry (a test checks they match).
+  stay local in docs/licenses/ (ignored by Git). New sounds join over time: add the file, its catalog line, and
+  its MEDIA_FILES entry (a test checks they match). Since 1.1.0 they are grouped
+  by theme after Dyre's Picks ("Dyre's Speed", "Dyre's Cats", "Dyre's Bears", "Dyre's Water";
+  author: "arrange them by theme"); WAVs are rewritten as plain 16-bit PCM
+  with no metadata chunks, to stay under WAV_MAX_BYTES.
 
 ## Project structure
 

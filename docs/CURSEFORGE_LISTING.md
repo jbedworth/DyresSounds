@@ -22,6 +22,7 @@ The sounds and sound picker that Dyre's AddOns share, for World of Warcraft: For
 
 ### What it has
 - **Dyre's Picks:** nine effect sounds that ship with it, first in every sound menu.
+- **Dyre's Speed, Dyre's Cats, Dyre's Bears, and Dyre's Water:** 22 more, by theme: speed boosts and engines for travel spells, and meows, growls, roars, and splashes for the Druid's forms.
 - The game's interface sounds, the Cooldown Manager's alert sounds, imp sounds, and Text to Speech.
 - A sound menu grouped like the Cooldown Manager's; choosing a sound plays it.
 

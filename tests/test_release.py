@@ -275,7 +275,12 @@ class ReleaseTests(unittest.TestCase):
         self.assertEqual(builder.MEDIA_FILES, tuple("Sounds/" + n for n in (
             "FadingSlowDisappear.mp3", "DisappearBlowSwoosh.mp3", "CartoonVanish.mp3", "Disappear.mp3",
             "MagicalDisappear.mp3", "DisappearShort.wav", "DisappearingSwoosh.wav",
-            "TeleportWarpVanish.wav", "SlowSwoosh.wav")))
+            "TeleportWarpVanish.wav", "SlowSwoosh.wav",
+            "SpeedBoost.wav", "Boost.wav", "RetroBoost.wav", "VideoGameSpeed.wav", "PowerUp.wav",
+            "EngineRevDoppler.wav", "CarDoppler.wav", "SpaceshipSlowDown.wav", "KittyMeow.wav",
+            "AngryCatMeow.wav", "ChildTigerGrrr.wav", "TigerRoar.wav", "LionRoar.wav", "LittleKidRoar.wav",
+            "CartoonBadBear.wav", "BearRoar.wav", "MonsterBear.wav", "BigMonsterRoar.wav",
+            "WaterDive.wav", "FishSplash.wav", "FishPassBy.wav", "WalrusRoar.wav")))
         path, _ = self.build()
         with zipfile.ZipFile(path) as archive:
             self.assertIn("DyresSounds/Sounds/FadingSlowDisappear.mp3", archive.namelist())

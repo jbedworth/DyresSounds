@@ -22,6 +22,30 @@ ns.CATALOG = {
     {key = "disappearingswoosh", label = "Dyre's Picks: Disappearing swoosh", pick = "DisappearingSwoosh.wav"},
     {key = "teleportvanish", label = "Dyre's Picks: Teleport warp vanish", pick = "TeleportWarpVanish.wav"},
     {key = "slowswoosh", label = "Dyre's Picks: Slow swoosh", pick = "SlowSwoosh.wav"},
+    -- More picks by theme (1.1.0; the same Envato license): speed for travel
+    -- and sprint spells, then cats, bears, and water for the Druid's forms.
+    {key = "speedboost", label = "Dyre's Speed: Speed boost", pick = "SpeedBoost.wav"},
+    {key = "boost", label = "Dyre's Speed: Boost", pick = "Boost.wav"},
+    {key = "retroboost", label = "Dyre's Speed: Retro boost", pick = "RetroBoost.wav"},
+    {key = "videogamespeed", label = "Dyre's Speed: Video game speed", pick = "VideoGameSpeed.wav"},
+    {key = "powerup", label = "Dyre's Speed: Power-up", pick = "PowerUp.wav"},
+    {key = "enginerev", label = "Dyre's Speed: Engine rev", pick = "EngineRevDoppler.wav"},
+    {key = "cardoppler", label = "Dyre's Speed: Car zooming by", pick = "CarDoppler.wav"},
+    {key = "spaceshipslow", label = "Dyre's Speed: Spaceship slowing down", pick = "SpaceshipSlowDown.wav"},
+    {key = "kittymeow", label = "Dyre's Cats: Kitty meow", pick = "KittyMeow.wav"},
+    {key = "angrycat", label = "Dyre's Cats: Angry cat", pick = "AngryCatMeow.wav"},
+    {key = "childtiger", label = "Dyre's Cats: Child's tiger grrr", pick = "ChildTigerGrrr.wav"},
+    {key = "tigerroar", label = "Dyre's Cats: Tiger growl", pick = "TigerRoar.wav"},
+    {key = "lionroar", label = "Dyre's Cats: Lion roar", pick = "LionRoar.wav"},
+    {key = "kidroar", label = "Dyre's Bears: Little kid roar", pick = "LittleKidRoar.wav"},
+    {key = "cartoonbear", label = "Dyre's Bears: Cartoon bad bear", pick = "CartoonBadBear.wav"},
+    {key = "bearroar", label = "Dyre's Bears: Bear roar", pick = "BearRoar.wav"},
+    {key = "monsterbear", label = "Dyre's Bears: Monster bear", pick = "MonsterBear.wav"},
+    {key = "bigmonsterroar", label = "Dyre's Bears: Big monster roar", pick = "BigMonsterRoar.wav"},
+    {key = "waterdive", label = "Dyre's Water: Dive", pick = "WaterDive.wav"},
+    {key = "fishsplash", label = "Dyre's Water: Fish splash", pick = "FishSplash.wav"},
+    {key = "fishpassby", label = "Dyre's Water: Fish swimming by", pick = "FishPassBy.wav"},
+    {key = "walrusroar", label = "Dyre's Water: Walrus roar", pick = "WalrusRoar.wav"},
     -- The client's interface sounds, by SOUNDKIT name, then the Cooldown
     -- Manager's alert sounds by kit ID in its categories, generated from the
     -- pinned Blizzard_CooldownViewer/CooldownViewerSoundAlertData.lua (as in

@@ -8,6 +8,9 @@ one of Dyre's AddOns asks for it.
 
 - **Dyre's Picks:** nine effect sounds that ship with it (fading, swoosh,
   vanish, and magical disappear sounds), first in every sound menu.
+- **Dyre's Speed, Dyre's Cats, Dyre's Bears, and Dyre's Water:** 22 more, by
+  theme: speed boosts and engines for travel spells, and meows, growls, roars,
+  and splashes for the Druid's forms.
 - The game's interface sounds, the Cooldown Manager's alert sounds in its
   categories (Animals, Devices, Impacts, Instruments, Warcraft 2,
   Warcraft 3), imp laughs and chirps, and Text to Speech.
