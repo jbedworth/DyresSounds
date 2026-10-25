@@ -31,7 +31,13 @@ which shipped the same sounds:
 - A game sound by path (`Sound\Interface\RaidWarning.ogg`) does not play.
 - An AddOn's own MP3 and WAV files play, also through `AddAuraSound` when a
   buff runs out.
-- Game sounds by file ID (the imp sounds) play.
+- Game sounds by file ID (the imp sounds) play on Forever.
+- Classic Era 1.15.9 (author, 1.2.0): every sound from Animals through
+  Hellish imp (kit IDs and file IDs) is silent, also in previews; the Dyre's
+  groups and Interface play. 1.2.0 leaves them out there.
+- Forever (author, 1.2.0): the Cooldown Manager's kit-ID sounds (Animals
+  through Warcraft 3) played intermittently or not at all; 1.2.0 turns them
+  off everywhere until they are debugged (`KIT_ID_SOUNDS`).
 - The interface sound kits play from a timer, also in combat (the cooldown
   chimes).
 

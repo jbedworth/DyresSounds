@@ -11,10 +11,15 @@ one of Dyre's AddOns asks for it.
 - **Dyre's Speed, Dyre's Cats, Dyre's Bears, and Dyre's Water:** 22 more, by
   theme: speed boosts and engines for travel spells, and meows, growls, roars,
   and splashes for the Druid's forms.
-- The game's interface sounds, the Cooldown Manager's alert sounds in its
-  categories (Animals, Devices, Impacts, Instruments, Warcraft 2,
-  Warcraft 3), imp laughs and chirps, and Text to Speech.
-- A sound menu grouped like the Cooldown Manager's; choosing a sound plays it.
+- **Dyre's Aggression:** 11 battle cries and shouts, for Charge and other
+  Warrior moves.
+- **Dyre's Gore, Dyre's Smacks, and Dyre's Blades:** 14 crit sounds, from
+  slices and splats to slaps, kisses, and sword swings.
+- The game's interface sounds, imp laughs and chirps (not on Classic Era or
+  Anniversary), and Text to Speech. The Cooldown Manager's alert sounds
+  (Animals, Devices, Impacts, Instruments, Warcraft 2, Warcraft 3) are off
+  for now: they played only some of the time, or not at all.
+- A sound menu grouped by theme; choosing a sound plays it.
 
 The AddOns that use it list it as an optional dependency, so they always load;
 without it, they play no sounds and say once in chat what to install.

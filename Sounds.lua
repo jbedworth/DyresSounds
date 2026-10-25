@@ -87,7 +87,30 @@ local function SpeechVoice()
     return type(first) == "table" and first.voiceID or nil
 end
 
+-- Classic Era and Anniversary play neither the Cooldown Manager's sound kits
+-- (id) nor the creature sound files (fileID), though the code naming them is
+-- in their UI (found in client, author: every Animals through Hellish imp
+-- sound is silent on Era, also in previews). Their own sounds, the interface
+-- kits and the Dyre's sound files, play. Read once at load: the project
+-- never changes in a session.
+local CLASSIC = type(WOW_PROJECT_ID) == "number"
+    and (WOW_PROJECT_ID == WOW_PROJECT_CLASSIC or WOW_PROJECT_ID == WOW_PROJECT_BURNING_CRUSADE_CLASSIC)
+
+-- The Cooldown Manager's kit-ID sounds are off on every client for now
+-- (author, 1.2.0: on Forever they "played intermittently or not at all";
+-- "drop them on forever until we can test/debug further"). They stay in the
+-- catalog, so a saved key keeps its label; set this to true to offer them.
+local KIT_ID_SOUNDS = false
+
+-- Whether this client can play the sound at all.
+local function Silent(sound)
+    return (sound.id and (CLASSIC or not KIT_ID_SOUNDS)) or (CLASSIC and sound.fileID) or false
+end
+
 local function Available(sound)
+    if Silent(sound) then
+        return false
+    end
     if sound.voice then
         return SpeechVoice() ~= nil
     end
@@ -128,11 +151,19 @@ function DyresSounds.Groups(filter)
     return groups
 end
 
+-- Whether this client can play the sound: one a saved key names may be in
+-- the catalog but silent here (Classic), so a caller can choose another.
+function DyresSounds.Playable(key)
+    local sound = DyresSounds.Find(key)
+    return sound ~= nil and Available(sound)
+end
+
 -- Plays a sound once. speech is what a text-to-speech sound says. Returns
--- true when the client was asked to play it.
+-- true when the client was asked to play it; false for a sound this client
+-- cannot play.
 function DyresSounds.Play(key, speech, channel)
     local sound = DyresSounds.Find(key)
-    if not sound then
+    if not sound or Silent(sound) then
         return false
     end
     channel = channel or DEFAULT_CHANNEL

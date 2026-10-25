@@ -33,7 +33,9 @@ title: the folder, TOC, repository, and global use `DyresSounds`.
   `CONTRACT` only for a change a dependent must know about.
 - `Find`, `Resolve` (a saved key to the library's own; old MTF, WTF, and DSU
   keys are aliases), `Label`, `Parts`, `List(filter)`, `Groups(filter)`,
-  `Play(key, speech, channel)`, `AuraSound(key)` (the `UnitAuraSoundInfo` file
+  `Play(key, speech, channel)`, `Playable(key)` (1.2.0, additive: false for
+  a sound in the catalog that this client cannot play, so a dependent can pick
+  another; `Play` returns false for it), `AuraSound(key)` (the `UnitAuraSoundInfo` file
   fields), `Choices(filter)`, `SetupMenu(initializer, filter)`, and
   `SetupCheckboxMenu(initializer, filter)` (0.1.2: a row from Blizzard's
   `CreateSettingsCheckboxDropdownInitializer`, whose Init sets up its own
@@ -47,13 +49,25 @@ title: the folder, TOC, repository, and global use `DyresSounds`.
   client's interface sounds by SOUNDKIT name, the Cooldown Manager's alert
   sounds by kit ID in its categories, imp sounds by file ID, and Text to
   Speech last. A sound the client lacks is left out of the menu.
+- Classic Era and Anniversary (`WOW_PROJECT_ID` is `WOW_PROJECT_CLASSIC` or
+  `WOW_PROJECT_BURNING_CRUSADE_CLASSIC`): kit-ID (`id`) and file-ID
+  (`fileID`) sounds are left out, and `Play` refuses them (found in client,
+  author, 1.2.0: every sound from Animals through Hellish imp was silent on
+  Era, also in previews; the Dyre's groups and Interface played). Their UI
+  source carries the Cooldown Manager's kit list, but the client has no such
+  kits.
+- The kit-ID sounds are off on every client for now (`KIT_ID_SOUNDS = false`
+  in Sounds.lua; author, 1.2.0: on Forever they "played intermittently or not
+  at all"; "drop them on forever until we can test/debug further"). They stay
+  in the catalog so saved keys keep their labels and aliases; `Play` returns
+  false for them, so dependents fall back to their defaults.
 - Found in client: the client plays a game sound by file ID or an AddOn's own
   file, never a game sound by path (RaidWarning.ogg stayed silent).
 - Dyre's Picks are licensed to Vertiso Corporation from Envato (Elements and
   AudioJungle); the author's license allows every project. The license files
   stay local in docs/licenses/ (ignored by Git). New sounds join over time: add the file, its catalog line, and
   its MEDIA_FILES entry (a test checks they match). Since 1.1.0 they are grouped
-  by theme after Dyre's Picks ("Dyre's Speed", "Dyre's Cats", "Dyre's Bears", "Dyre's Water";
+  by theme after Dyre's Picks ("Dyre's Speed", "Dyre's Cats", "Dyre's Bears", "Dyre's Water", and since 1.2.0 "Dyre's Aggression", "Dyre's Gore", "Dyre's Smacks", "Dyre's Blades";
   author: "arrange them by theme"); WAVs are rewritten as plain 16-bit PCM
   with no metadata chunks, to stay under WAV_MAX_BYTES.
 

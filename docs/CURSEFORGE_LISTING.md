@@ -23,8 +23,10 @@ The sounds and sound picker that Dyre's AddOns share, for World of Warcraft: For
 ### What it has
 - **Dyre's Picks:** nine effect sounds that ship with it, first in every sound menu.
 - **Dyre's Speed, Dyre's Cats, Dyre's Bears, and Dyre's Water:** 22 more, by theme: speed boosts and engines for travel spells, and meows, growls, roars, and splashes for the Druid's forms.
-- The game's interface sounds, the Cooldown Manager's alert sounds, imp sounds, and Text to Speech.
-- A sound menu grouped like the Cooldown Manager's; choosing a sound plays it.
+- **Dyre's Aggression:** 11 battle cries and shouts, for Charge and other Warrior moves.
+- **Dyre's Gore, Dyre's Smacks, and Dyre's Blades:** 14 crit sounds, from slices and splats to slaps, kisses, and sword swings.
+- The game's interface sounds, imp sounds, and Text to Speech.
+- A sound menu grouped by theme; choosing a sound plays it.
 
 ### Compatibility
 For World of Warcraft: Forever 1.60.1 (tested on build 70450). WowUp users (2.24.0 or later): install from the repository URL; GitHub releases carry the Forever metadata WowUp needs.

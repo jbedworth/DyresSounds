@@ -61,6 +61,8 @@ local function fixture(options)
             state.inserted = {button = button, setting = setting, inserter = inserter}
         end,
     }
+    env.WOW_PROJECT_CLASSIC, env.WOW_PROJECT_BURNING_CRUSADE_CLASSIC = 2, 5
+    env.WOW_PROJECT_ID = options.project or 1
     for _, name in ipairs(options.remove or {}) do env[name] = nil end
     local ns = {}
     for _, path in ipairs(tocFiles()) do
@@ -106,19 +108,23 @@ test("the library is the global DyresSounds behind a contract", function()
 end)
 test("Dyre's Picks come first, then the game's groups; keys are unique", function()
     local lib = fixture({voice = true}).lib
-    equal(names(lib.Groups()), "Dyre's Picks,Dyre's Speed,Dyre's Cats,Dyre's Bears,Dyre's Water,Interface,Animals,Devices,Impacts,Instruments,"
-        .. "Warcraft 2,Warcraft 3,Imp,Hellish imp,Text to Speech")
+    equal(names(lib.Groups()), "Dyre's Picks,Dyre's Speed,Dyre's Cats,Dyre's Bears,Dyre's Water,Dyre's Aggression,Dyre's Gore,Dyre's Smacks,Dyre's Blades,Interface,"
+        .. "Imp,Hellish imp,Text to Speech")
     equal(#lib.Groups()[1].sounds, 9)
     equal(#lib.Groups()[2].sounds, 8, "Dyre's Speed")
     equal(#lib.Groups()[3].sounds, 5, "Dyre's Cats")
     equal(#lib.Groups()[4].sounds, 5, "Dyre's Bears")
     equal(#lib.Groups()[5].sounds, 4, "Dyre's Water")
+    equal(#lib.Groups()[6].sounds, 11, "Dyre's Aggression")
+    equal(#lib.Groups()[7].sounds, 7, "Dyre's Gore")
+    equal(#lib.Groups()[8].sounds, 4, "Dyre's Smacks")
+    equal(#lib.Groups()[9].sounds, 3, "Dyre's Blades")
     local seen = {}
     for _, sound in ipairs(lib.List()) do
         equal(seen[sound.key], nil, "unique key " .. sound.key)
         seen[sound.key] = true
     end
-    equal(#lib.List(), 31 + 9 + 67 + 13 + 1, "a SOUNDKIT name the client lacks is left out")
+    equal(#lib.List(), 56 + 9 + 13 + 1, "a SOUNDKIT name the client lacks, and the kit IDs (off for now), are left out")
 end)
 test("without a voice there is no Text to Speech", function()
     local lib = fixture().lib
@@ -160,8 +166,8 @@ test("each kind of sound plays the way the client accepts it", function()
     lib.Play("talent", nil, "SFX")
     equal(state.kits[1].kit, 73280, "SOUNDKIT names")
     equal(state.kits[1].channel, "SFX")
-    lib.Play("impactspopclick")
-    equal(state.kits[2].kit, 316434, "the Cooldown Manager's kit IDs")
+    equal(lib.Play("impactspopclick"), false, "the Cooldown Manager's kit IDs: off for now")
+    equal(#state.kits, 1)
     equal(lib.Play("voice", "Blink ready"), true)
     equal(state.spoken[1].text, "Blink ready")
     equal(lib.Play("voice"), false, "text-to-speech needs something to say")
@@ -173,9 +179,58 @@ test("aura sounds are files only: names for Dyre's Picks, IDs for game files", f
     equal(lib.AuraSound("hellishimp1").soundFileID, 1281685)
     equal(lib.AuraSound("talent"), nil, "a sound kit cannot be an aura sound")
     equal(lib.AuraSound("voice"), nil)
-    equal(#lib.List("aura"), 31 + 13)
-    equal(names(lib.Groups("aura")), "Dyre's Picks,Dyre's Speed,Dyre's Cats,Dyre's Bears,Dyre's Water,Imp,Hellish imp")
+    equal(#lib.List("aura"), 56 + 13)
+    equal(names(lib.Groups("aura")), "Dyre's Picks,Dyre's Speed,Dyre's Cats,Dyre's Bears,Dyre's Water,Dyre's Aggression,Dyre's Gore,Dyre's Smacks,Dyre's Blades,Imp,Hellish imp")
 end)
+test("on Classic Era and Anniversary, only sounds the client plays are offered", function()
+    for _, project in ipairs({2, 5}) do
+        local state = fixture({project = project, voice = true})
+        local lib = state.lib
+        for _, sound in ipairs(lib.List()) do
+            equal(sound.id == nil and sound.fileID == nil, true, "offered on " .. project .. ": " .. sound.key)
+        end
+        local groups = {}
+        for _, group in ipairs(lib.Groups()) do groups[#groups + 1] = group.name end
+        groups = table.concat(groups, ",")
+        equal(groups:find("Impacts", 1, true), nil, "no Impacts group")
+        equal(groups:find("Imp,", 1, true), nil, "no Imp group")
+        equal(groups:find("Interface", 1, true) ~= nil, true, "the interface sounds stay")
+        equal(groups:find("Dyre's Gore", 1, true) ~= nil, true, "Dyre's sounds stay")
+        equal(lib.Playable("impactspopclick"), false)
+        equal(lib.Playable("implaugh1"), false)
+        equal(lib.Playable("talent"), true)
+        equal(lib.Playable("goreslice"), true)
+        equal(lib.Play("impactspopclick"), false, "a saved kit ID plays nothing and says so")
+        equal(lib.Play("implaugh1"), false)
+        equal(#state.kits + #state.played, 0)
+        equal(lib.Play("talent"), true)
+        equal(lib.Label("impactspopclick"), "Impacts: Pop Click", "still found, for its label")
+    end
+    local forever = fixture()
+    equal(forever.lib.Playable("implaugh1"), true, "elsewhere the imp sounds stay")
+    equal(forever.lib.Play("implaugh1"), true)
+end)
+
+test("the Cooldown Manager's kit-ID sounds are off everywhere for now", function()
+    local state = fixture()
+    local lib = state.lib
+    for _, sound in ipairs(lib.List()) do
+        equal(sound.id, nil, "offered: " .. sound.key)
+    end
+    local groups = {}
+    for _, group in ipairs(lib.Groups()) do groups[#groups + 1] = group.name end
+    groups = "," .. table.concat(groups, ",") .. ","
+    for _, gone in ipairs({"Animals", "Devices", "Impacts", "Instruments", "Warcraft 2", "Warcraft 3"}) do
+        equal(groups:find("," .. gone .. ",", 1, true), nil, gone)
+    end
+    equal(groups:find(",Imp,", 1, true) ~= nil, true, "the imp files stay")
+    equal(lib.Playable("impactspopclick"), false)
+    equal(lib.Play("war2choir"), false)
+    equal(#state.kits, 0)
+    equal(lib.Label("impactspopclick"), "Impacts: Pop Click", "a saved key keeps its label")
+    equal(lib.Resolve("popclick"), "impactspopclick", "and its alias")
+end)
+
 test("without the sound APIs nothing is offered or played", function()
     local state = fixture({remove = {"PlaySoundFile", "PlaySound", "SOUNDKIT"}})
     equal(#state.lib.List(), 0)
@@ -188,7 +243,7 @@ test("a dropdown gets the plain list and the nested menu; other dropdowns keep t
     local state = fixture()
     local lib = state.lib
     local choices = lib.Choices("aura")()
-    equal(#choices, 44)
+    equal(#choices, 69)
     equal(choices[1].label, "Dyre's Picks: Fading slow disappear")
     local value = "magical"
     local setting = {GetValue = function() return value end, SetValue = function(_, v) value = v end}
@@ -208,8 +263,8 @@ test("a dropdown gets the plain list and the nested menu; other dropdowns keep t
     equal(blizzard, 1)
     local root = menuRoot()
     state.inserted.inserter(setting, root)
-    equal(names(root.entries), "Dyre's Picks,Dyre's Speed,Dyre's Cats,Dyre's Bears,Dyre's Water,Interface,Animals,Devices,Impacts,Instruments,"
-        .. "Warcraft 2,Warcraft 3,Imp,Hellish imp")
+    equal(names(root.entries), "Dyre's Picks,Dyre's Speed,Dyre's Cats,Dyre's Bears,Dyre's Water,Dyre's Aggression,Dyre's Gore,Dyre's Smacks,Dyre's Blades,Interface,"
+        .. "Imp,Hellish imp")
     local picks = root.entries[1]
     equal(picks.entries[5].text, "Magical disappear", "names inside their group")
     equal(picks.entries[5].isSelected("magical"), true)
@@ -281,7 +336,7 @@ test("a checkbox row gets the nested sound menu, its full label, and no steppers
     equal(state.inserted.setting, setting)
     local root = menuRoot()
     state.inserted.inserter(setting, root)
-    equal(names(root.entries), "Dyre's Picks,Dyre's Speed,Dyre's Cats,Dyre's Bears,Dyre's Water,Imp,Hellish imp", "the filter is kept")
+    equal(names(root.entries), "Dyre's Picks,Dyre's Speed,Dyre's Cats,Dyre's Bears,Dyre's Water,Dyre's Aggression,Dyre's Gore,Dyre's Smacks,Dyre's Blades,Imp,Hellish imp", "the filter is kept")
     equal(dropdown.selectionFunc(), "Dyre's Picks: Magical disappear")
     equal(dropdown.updated, "menu", "the label is refreshed")
     equal(frame.Control.steppers, false, "no steppers through a menu of submenus")

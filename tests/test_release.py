@@ -280,7 +280,9 @@ class ReleaseTests(unittest.TestCase):
             "EngineRevDoppler.wav", "CarDoppler.wav", "SpaceshipSlowDown.wav", "KittyMeow.wav",
             "AngryCatMeow.wav", "ChildTigerGrrr.wav", "TigerRoar.wav", "LionRoar.wav", "LittleKidRoar.wav",
             "CartoonBadBear.wav", "BearRoar.wav", "MonsterBear.wav", "BigMonsterRoar.wav",
-            "WaterDive.wav", "FishSplash.wav", "FishPassBy.wav", "WalrusRoar.wav")))
+            "WaterDive.wav", "FishSplash.wav", "FishPassBy.wav", "WalrusRoar.wav",
+            "MilitaryCharge.wav", "OrcCharge.wav", "PirateCharge.wav", "CrowdCharge.wav", "ChildrenCharge.wav", "WhistleCharge.wav", "RageAttack.wav", "RaspyShout.wav", "AngryScream.wav", "OrcAngry.wav", "OrcSpittingFury.wav",
+            "GoreSlice.wav", "GoreChop.wav", "GoreBash.wav", "GoreSplat.wav", "GoreBloodyImpact.wav", "WetSplatHit.wav", "WetFacePunch.wav", "WetSlap.wav", "SwishSmack.wav", "Kiss.wav", "Kisses.wav", "SwordSwipe.wav", "SwordCut.wav", "LaserSwordSwing.wav")))
         path, _ = self.build()
         with zipfile.ZipFile(path) as archive:
             self.assertIn("DyresSounds/Sounds/FadingSlowDisappear.mp3", archive.namelist())
@@ -302,7 +304,7 @@ class ReleaseTests(unittest.TestCase):
         notes = (self.output / "release-notes.md").read_text(encoding="utf-8")
         self.assertTrue(notes.startswith(
             f"# Dyre's Sounds {self.version}\n\n## Changes\n\n"
-            "- Fixed the thing.\n- Added the other.\n\n## Notes\n\n- For WoW: Forever."))
+            "- Fixed the thing.\n- Added the other.\n\n## Notes\n\n- For WoW: Forever and WoW Classic Era 1.15.9"))
         self.assertNotIn("Older entry", notes)
 
     def test_build_refuses_missing_empty_or_duplicate_changelog_section(self):

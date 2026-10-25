@@ -46,6 +46,35 @@ ns.CATALOG = {
     {key = "fishsplash", label = "Dyre's Water: Fish splash", pick = "FishSplash.wav"},
     {key = "fishpassby", label = "Dyre's Water: Fish swimming by", pick = "FishPassBy.wav"},
     {key = "walrusroar", label = "Dyre's Water: Walrus roar", pick = "WalrusRoar.wav"},
+    -- Battle cries and shouts (1.2.0; the same Envato license), for Charge,
+    -- shouts, and other Warrior cast chimes.
+    {key = "militarycharge", label = "Dyre's Aggression: Military: Charge!", pick = "MilitaryCharge.wav"},
+    {key = "orccharge", label = "Dyre's Aggression: Orc: Charge!", pick = "OrcCharge.wav"},
+    {key = "piratecharge", label = "Dyre's Aggression: Pirate: Charge!", pick = "PirateCharge.wav"},
+    {key = "crowdcharge", label = "Dyre's Aggression: Crowd: Charge!", pick = "CrowdCharge.wav"},
+    {key = "childrencharge", label = "Dyre's Aggression: Children: Charge!", pick = "ChildrenCharge.wav"},
+    {key = "whistlecharge", label = "Dyre's Aggression: Bugle charge", pick = "WhistleCharge.wav"},
+    {key = "rageattack", label = "Dyre's Aggression: Rage-filled attack", pick = "RageAttack.wav"},
+    {key = "raspyshout", label = "Dyre's Aggression: Raspy angry shout", pick = "RaspyShout.wav"},
+    {key = "angryscream", label = "Dyre's Aggression: Angry scream", pick = "AngryScream.wav"},
+    {key = "orcangry", label = "Dyre's Aggression: Angry orc", pick = "OrcAngry.wav"},
+    {key = "orcfury", label = "Dyre's Aggression: Orc spitting fury", pick = "OrcSpittingFury.wav"},
+    -- Crit sounds (1.2.0; the same Envato license), for Dyre's Crit Mayhem's
+    -- themes: gore, cartoon smacks and kisses, and blades.
+    {key = "goreslice", label = "Dyre's Gore: Slice", pick = "GoreSlice.wav"},
+    {key = "gorechop", label = "Dyre's Gore: Chop", pick = "GoreChop.wav"},
+    {key = "gorebash", label = "Dyre's Gore: Bash", pick = "GoreBash.wav"},
+    {key = "goresplat", label = "Dyre's Gore: Splat", pick = "GoreSplat.wav"},
+    {key = "gorebloody", label = "Dyre's Gore: Bloody impact", pick = "GoreBloodyImpact.wav"},
+    {key = "wetsplat", label = "Dyre's Gore: Wet splat hit", pick = "WetSplatHit.wav"},
+    {key = "wetpunch", label = "Dyre's Gore: Wet face punch", pick = "WetFacePunch.wav"},
+    {key = "wetslap", label = "Dyre's Smacks: Wet slap", pick = "WetSlap.wav"},
+    {key = "swishsmack", label = "Dyre's Smacks: Swish smack", pick = "SwishSmack.wav"},
+    {key = "kiss", label = "Dyre's Smacks: Kiss", pick = "Kiss.wav"},
+    {key = "kisses", label = "Dyre's Smacks: Kisses", pick = "Kisses.wav"},
+    {key = "swordswipe", label = "Dyre's Blades: Sword swipe", pick = "SwordSwipe.wav"},
+    {key = "swordcut", label = "Dyre's Blades: Sword cut", pick = "SwordCut.wav"},
+    {key = "laserswing", label = "Dyre's Blades: Laser sword swing", pick = "LaserSwordSwing.wav"},
     -- The client's interface sounds, by SOUNDKIT name, then the Cooldown
     -- Manager's alert sounds by kit ID in its categories, generated from the
     -- pinned Blizzard_CooldownViewer/CooldownViewerSoundAlertData.lua (as in
