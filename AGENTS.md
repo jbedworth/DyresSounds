@@ -67,7 +67,7 @@ title: the folder, TOC, repository, and global use `DyresSounds`.
   AudioJungle); the author's license allows every project. The license files
   stay local in docs/licenses/ (ignored by Git). New sounds join over time: add the file, its catalog line, and
   its MEDIA_FILES entry (a test checks they match). Since 1.1.0 they are grouped
-  by theme after Dyre's Picks ("Dyre's Speed", "Dyre's Cats", "Dyre's Bears", "Dyre's Water", and since 1.2.0 "Dyre's Aggression", "Dyre's Gore", "Dyre's Smacks", "Dyre's Blades";
+  by theme after Dyre's Picks ("Dyre's Speed", "Dyre's Cats", "Dyre's Bears", "Dyre's Water", and since 1.2.0 "Dyre's Aggression", "Dyre's Gore", "Dyre's Smacks", "Dyre's Blades", and since 1.3.0 "Dyre's Sax" (an alto sax scale cut at its pitch changes into eight notes, for counting chimes);
   author: "arrange them by theme"); WAVs are rewritten as plain 16-bit PCM
   with no metadata chunks, to stay under WAV_MAX_BYTES.
 

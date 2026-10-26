@@ -75,6 +75,17 @@ ns.CATALOG = {
     {key = "swordswipe", label = "Dyre's Blades: Sword swipe", pick = "SwordSwipe.wav"},
     {key = "swordcut", label = "Dyre's Blades: Sword cut", pick = "SwordCut.wav"},
     {key = "laserswing", label = "Dyre's Blades: Laser sword swing", pick = "LaserSwordSwing.wav"},
+    -- An alto sax scale, one note each (1.3.0; the same Envato license): a
+    -- concert B-flat major scale cut at its pitch changes, for counting chimes
+    -- (combo points). Note 8, the octave, is held.
+    {key = "sax1", label = "Dyre's Sax: Note 1: Bb", pick = "Sax1.wav"},
+    {key = "sax2", label = "Dyre's Sax: Note 2: C", pick = "Sax2.wav"},
+    {key = "sax3", label = "Dyre's Sax: Note 3: D", pick = "Sax3.wav"},
+    {key = "sax4", label = "Dyre's Sax: Note 4: Eb", pick = "Sax4.wav"},
+    {key = "sax5", label = "Dyre's Sax: Note 5: F", pick = "Sax5.wav"},
+    {key = "sax6", label = "Dyre's Sax: Note 6: G", pick = "Sax6.wav"},
+    {key = "sax7", label = "Dyre's Sax: Note 7: A", pick = "Sax7.wav"},
+    {key = "sax8", label = "Dyre's Sax: Note 8: high Bb", pick = "Sax8.wav"},
     -- The client's interface sounds, by SOUNDKIT name, then the Cooldown
     -- Manager's alert sounds by kit ID in its categories, generated from the
     -- pinned Blizzard_CooldownViewer/CooldownViewerSoundAlertData.lua (as in

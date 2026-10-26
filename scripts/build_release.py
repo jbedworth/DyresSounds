@@ -79,7 +79,15 @@ MEDIA_FILES = ("Sounds/FadingSlowDisappear.mp3",
                "Sounds/Kisses.wav",
                "Sounds/SwordSwipe.wav",
                "Sounds/SwordCut.wav",
-               "Sounds/LaserSwordSwing.wav")
+               "Sounds/LaserSwordSwing.wav",
+               "Sounds/Sax1.wav",
+               "Sounds/Sax2.wav",
+               "Sounds/Sax3.wav",
+               "Sounds/Sax4.wav",
+               "Sounds/Sax5.wav",
+               "Sounds/Sax6.wav",
+               "Sounds/Sax7.wav",
+               "Sounds/Sax8.wav")
 PACKAGE_FILES = TEXT_FILES + MEDIA_FILES
 TGA_HEADER_SIZE = 18
 TGA_TRUECOLOR = 2

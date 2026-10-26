@@ -15,6 +15,8 @@ one of Dyre's AddOns asks for it.
   Warrior moves.
 - **Dyre's Gore, Dyre's Smacks, and Dyre's Blades:** 14 crit sounds, from
   slices and splats to slaps, kisses, and sword swings.
+- **Dyre's Sax:** an alto sax scale, eight notes from B-flat up to the
+  octave, for chimes that count up (combo points).
 - The game's interface sounds, imp laughs and chirps (not on Classic Era or
   Anniversary), and Text to Speech. The Cooldown Manager's alert sounds
   (Animals, Devices, Impacts, Instruments, Warcraft 2, Warcraft 3) are off

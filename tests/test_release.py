@@ -282,7 +282,8 @@ class ReleaseTests(unittest.TestCase):
             "CartoonBadBear.wav", "BearRoar.wav", "MonsterBear.wav", "BigMonsterRoar.wav",
             "WaterDive.wav", "FishSplash.wav", "FishPassBy.wav", "WalrusRoar.wav",
             "MilitaryCharge.wav", "OrcCharge.wav", "PirateCharge.wav", "CrowdCharge.wav", "ChildrenCharge.wav", "WhistleCharge.wav", "RageAttack.wav", "RaspyShout.wav", "AngryScream.wav", "OrcAngry.wav", "OrcSpittingFury.wav",
-            "GoreSlice.wav", "GoreChop.wav", "GoreBash.wav", "GoreSplat.wav", "GoreBloodyImpact.wav", "WetSplatHit.wav", "WetFacePunch.wav", "WetSlap.wav", "SwishSmack.wav", "Kiss.wav", "Kisses.wav", "SwordSwipe.wav", "SwordCut.wav", "LaserSwordSwing.wav")))
+            "GoreSlice.wav", "GoreChop.wav", "GoreBash.wav", "GoreSplat.wav", "GoreBloodyImpact.wav", "WetSplatHit.wav", "WetFacePunch.wav", "WetSlap.wav", "SwishSmack.wav", "Kiss.wav", "Kisses.wav", "SwordSwipe.wav", "SwordCut.wav", "LaserSwordSwing.wav",
+            "Sax1.wav", "Sax2.wav", "Sax3.wav", "Sax4.wav", "Sax5.wav", "Sax6.wav", "Sax7.wav", "Sax8.wav")))
         path, _ = self.build()
         with zipfile.ZipFile(path) as archive:
             self.assertIn("DyresSounds/Sounds/FadingSlowDisappear.mp3", archive.namelist())
