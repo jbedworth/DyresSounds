@@ -87,7 +87,19 @@ MEDIA_FILES = ("Sounds/FadingSlowDisappear.mp3",
                "Sounds/Sax5.wav",
                "Sounds/Sax6.wav",
                "Sounds/Sax7.wav",
-               "Sounds/Sax8.wav")
+               "Sounds/Sax8.wav",
+               "Sounds/Bassoon1.wav",
+               "Sounds/Bassoon2.wav",
+               "Sounds/Bassoon3.wav",
+               "Sounds/Bassoon4.wav",
+               "Sounds/Bassoon5.wav",
+               "Sounds/Bassoon6.wav",
+               "Sounds/Bassoon7.wav",
+               "Sounds/Bassoon8.wav",
+               "Sounds/FelHeartbeat.wav",
+               "Sounds/FelWetSmash.wav",
+               "Sounds/FelMudSplat.wav",
+               "Sounds/FelDemonGrowl.wav")
 PACKAGE_FILES = TEXT_FILES + MEDIA_FILES
 TGA_HEADER_SIZE = 18
 TGA_TRUECOLOR = 2

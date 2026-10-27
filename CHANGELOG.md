@@ -4,6 +4,15 @@ Player-facing changes for each Dyre's Sounds release, newest first. The
 release builder copies the section for the TOC version into the GitHub release
 notes and the CurseForge changelog, and fails if that section is missing.
 
+## 1.4.0
+
+### Features
+- **Dyre's Bassoon:** a quick comic bassoon climb, eight rising steps from B-flat up to F (the last one held), for chimes that count up, such as combo points.
+- **Dyre's Fel Sounds:** four dark crit sounds, for Dyre's Crit Mayhem's Fel theme: a heartbeat, a wet smash, a mud splat, and a deep demon growl.
+
+### Fixes
+- **Louder chimes:** the Dyre's Sax notes are louder, and all eight now play at the same level, so combo-point chimes are easier to hear in combat.
+
 ## 1.3.0
 
 ### Features

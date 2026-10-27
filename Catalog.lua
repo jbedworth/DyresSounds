@@ -86,6 +86,24 @@ ns.CATALOG = {
     {key = "sax6", label = "Dyre's Sax: Note 6: G", pick = "Sax6.wav"},
     {key = "sax7", label = "Dyre's Sax: Note 7: A", pick = "Sax7.wav"},
     {key = "sax8", label = "Dyre's Sax: Note 8: high Bb", pick = "Sax8.wav"},
+    -- A quick comic bassoon climb, one note each (1.4.0; the same Envato
+    -- license): eight chromatic steps from B-flat up to F, cut at the gaps
+    -- between them, notes 1-3 raised to match the rest. Note 8 is held.
+    {key = "bassoon1", label = "Dyre's Bassoon: Note 1: Bb", pick = "Bassoon1.wav"},
+    {key = "bassoon2", label = "Dyre's Bassoon: Note 2: B", pick = "Bassoon2.wav"},
+    {key = "bassoon3", label = "Dyre's Bassoon: Note 3: C", pick = "Bassoon3.wav"},
+    {key = "bassoon4", label = "Dyre's Bassoon: Note 4: C#", pick = "Bassoon4.wav"},
+    {key = "bassoon5", label = "Dyre's Bassoon: Note 5: D", pick = "Bassoon5.wav"},
+    {key = "bassoon6", label = "Dyre's Bassoon: Note 6: D#", pick = "Bassoon6.wav"},
+    {key = "bassoon7", label = "Dyre's Bassoon: Note 7: E", pick = "Bassoon7.wav"},
+    {key = "bassoon8", label = "Dyre's Bassoon: Note 8: F", pick = "Bassoon8.wav"},
+    -- Dark crit sounds for Dyre's Crit Mayhem's Fel theme (1.4.0; the same
+    -- Envato license): a heartbeat, a wet smash, a mud splat, and a deep
+    -- demon growl.
+    {key = "felheartbeat", label = "Dyre's Fel Sounds: Heartbeat", pick = "FelHeartbeat.wav"},
+    {key = "felwetsmash", label = "Dyre's Fel Sounds: Wet smash", pick = "FelWetSmash.wav"},
+    {key = "felmudsplat", label = "Dyre's Fel Sounds: Mud splat", pick = "FelMudSplat.wav"},
+    {key = "feldemongrowl", label = "Dyre's Fel Sounds: Demon growl", pick = "FelDemonGrowl.wav"},
     -- The client's interface sounds, by SOUNDKIT name, then the Cooldown
     -- Manager's alert sounds by kit ID in its categories, generated from the
     -- pinned Blizzard_CooldownViewer/CooldownViewerSoundAlertData.lua (as in

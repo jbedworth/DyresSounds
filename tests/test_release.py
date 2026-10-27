@@ -283,7 +283,9 @@ class ReleaseTests(unittest.TestCase):
             "WaterDive.wav", "FishSplash.wav", "FishPassBy.wav", "WalrusRoar.wav",
             "MilitaryCharge.wav", "OrcCharge.wav", "PirateCharge.wav", "CrowdCharge.wav", "ChildrenCharge.wav", "WhistleCharge.wav", "RageAttack.wav", "RaspyShout.wav", "AngryScream.wav", "OrcAngry.wav", "OrcSpittingFury.wav",
             "GoreSlice.wav", "GoreChop.wav", "GoreBash.wav", "GoreSplat.wav", "GoreBloodyImpact.wav", "WetSplatHit.wav", "WetFacePunch.wav", "WetSlap.wav", "SwishSmack.wav", "Kiss.wav", "Kisses.wav", "SwordSwipe.wav", "SwordCut.wav", "LaserSwordSwing.wav",
-            "Sax1.wav", "Sax2.wav", "Sax3.wav", "Sax4.wav", "Sax5.wav", "Sax6.wav", "Sax7.wav", "Sax8.wav")))
+            "Sax1.wav", "Sax2.wav", "Sax3.wav", "Sax4.wav", "Sax5.wav", "Sax6.wav", "Sax7.wav", "Sax8.wav",
+            "Bassoon1.wav", "Bassoon2.wav", "Bassoon3.wav", "Bassoon4.wav", "Bassoon5.wav", "Bassoon6.wav", "Bassoon7.wav", "Bassoon8.wav",
+            "FelHeartbeat.wav", "FelWetSmash.wav", "FelMudSplat.wav", "FelDemonGrowl.wav")))
         path, _ = self.build()
         with zipfile.ZipFile(path) as archive:
             self.assertIn("DyresSounds/Sounds/FadingSlowDisappear.mp3", archive.namelist())

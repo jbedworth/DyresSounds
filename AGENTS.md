@@ -67,7 +67,7 @@ title: the folder, TOC, repository, and global use `DyresSounds`.
   AudioJungle); the author's license allows every project. The license files
   stay local in docs/licenses/ (ignored by Git). New sounds join over time: add the file, its catalog line, and
   its MEDIA_FILES entry (a test checks they match). Since 1.1.0 they are grouped
-  by theme after Dyre's Picks ("Dyre's Speed", "Dyre's Cats", "Dyre's Bears", "Dyre's Water", and since 1.2.0 "Dyre's Aggression", "Dyre's Gore", "Dyre's Smacks", "Dyre's Blades", and since 1.3.0 "Dyre's Sax" (an alto sax scale cut at its pitch changes into eight notes, for counting chimes);
+  by theme after Dyre's Picks ("Dyre's Speed", "Dyre's Cats", "Dyre's Bears", "Dyre's Water", and since 1.2.0 "Dyre's Aggression", "Dyre's Gore", "Dyre's Smacks", "Dyre's Blades", since 1.3.0 "Dyre's Sax", and since 1.4.0 "Dyre's Bassoon" (a chromatic bassoon climb cut at its gaps, notes 1-3 leveled up, then all raised x2.5 from the cut with a soft limiter, knee 24000, ceiling 31500; author: doubled was "better", then "give them both 25% more volume"; in 1.4.0 the sax notes got the same treatment: 2-4 and 8 leveled to the others, then all x1.25) and "Dyre's Fel Sounds" (for Dyre's Crit Mayhem's Fel theme) (an alto sax scale cut at its pitch changes into eight notes, for counting chimes);
   author: "arrange them by theme"); WAVs are rewritten as plain 16-bit PCM
   with no metadata chunks, to stay under WAV_MAX_BYTES.
 

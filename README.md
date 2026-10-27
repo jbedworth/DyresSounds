@@ -17,6 +17,10 @@ one of Dyre's AddOns asks for it.
   slices and splats to slaps, kisses, and sword swings.
 - **Dyre's Sax:** an alto sax scale, eight notes from B-flat up to the
   octave, for chimes that count up (combo points).
+- **Dyre's Bassoon:** a quick comic bassoon climb, eight rising steps,
+  for chimes that count up.
+- **Dyre's Fel Sounds:** a heartbeat, a wet smash, a mud splat, and a deep
+  demon growl, for dark crit themes.
 - The game's interface sounds, imp laughs and chirps (not on Classic Era or
   Anniversary), and Text to Speech. The Cooldown Manager's alert sounds
   (Animals, Devices, Impacts, Instruments, Warcraft 2, Warcraft 3) are off
