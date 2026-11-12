@@ -4,6 +4,11 @@ Player-facing changes for each Dyre's Sounds release, newest first. The
 release builder copies the section for the TOC version into the GitHub release
 notes and the CurseForge changelog, and fails if that section is missing.
 
+## 1.5.0
+
+### Features
+- **Dyre's Alerts:** 15 warning sounds, for threat warnings and other alerts: a bell buzz, a car alarm, a rising glass sting, a danger trill, a clarinet danger chord, a spooky sting, a cartoon shake, an angry bird, a magpie, a bird crowing, a cartoon select, a bubble, a computer alert, a steel drum, and a xylophone.
+
 ## 1.4.0
 
 ### Features

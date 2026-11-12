@@ -19,6 +19,8 @@ one of Dyre's AddOns asks for it.
   octave, for chimes that count up (combo points).
 - **Dyre's Bassoon:** a quick comic bassoon climb, eight rising steps,
   for chimes that count up.
+- **Dyre's Alerts:** 15 warning sounds: alarms, danger stings, and cartoon
+  and musical alerts, for threat warnings and other alerts.
 - **Dyre's Fel Sounds:** a heartbeat, a wet smash, a mud splat, and a deep
   demon growl, for dark crit themes.
 - The game's interface sounds, imp laughs and chirps (not on Classic Era or

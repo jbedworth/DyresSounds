@@ -99,7 +99,22 @@ MEDIA_FILES = ("Sounds/FadingSlowDisappear.mp3",
                "Sounds/FelHeartbeat.wav",
                "Sounds/FelWetSmash.wav",
                "Sounds/FelMudSplat.wav",
-               "Sounds/FelDemonGrowl.wav")
+               "Sounds/FelDemonGrowl.wav",
+               "Sounds/AlertBellBuzz.wav",
+               "Sounds/AlertCarSiren.wav",
+               "Sounds/AlertRisingGlass.wav",
+               "Sounds/AlertDangerTrill.wav",
+               "Sounds/AlertClarinet.wav",
+               "Sounds/AlertSpooky.wav",
+               "Sounds/AlertShake.wav",
+               "Sounds/AlertAngryBird.wav",
+               "Sounds/AlertMagpie.wav",
+               "Sounds/AlertBirdCrow.wav",
+               "Sounds/AlertSelect.wav",
+               "Sounds/AlertBubble.wav",
+               "Sounds/AlertComputer.wav",
+               "Sounds/AlertSteelDrum.wav",
+               "Sounds/AlertXylophone.wav")
 PACKAGE_FILES = TEXT_FILES + MEDIA_FILES
 TGA_HEADER_SIZE = 18
 TGA_TRUECOLOR = 2

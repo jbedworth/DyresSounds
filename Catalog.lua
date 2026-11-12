@@ -104,6 +104,24 @@ ns.CATALOG = {
     {key = "felwetsmash", label = "Dyre's Fel Sounds: Wet smash", pick = "FelWetSmash.wav"},
     {key = "felmudsplat", label = "Dyre's Fel Sounds: Mud splat", pick = "FelMudSplat.wav"},
     {key = "feldemongrowl", label = "Dyre's Fel Sounds: Demon growl", pick = "FelDemonGrowl.wav"},
+    -- Warning sounds for Dyre's Toolkit's threat colors and other alerts (1.5.0;
+    -- the same Envato license): alarms and danger stings, then cartoon and
+    -- musical alerts. Trimmed and leveled to the same peak.
+    {key = "alertbellbuzz", label = "Dyre's Alerts: Bell buzz", pick = "AlertBellBuzz.wav"},
+    {key = "alertcarsiren", label = "Dyre's Alerts: Car alarm", pick = "AlertCarSiren.wav"},
+    {key = "alertrisingglass", label = "Dyre's Alerts: Rising glass", pick = "AlertRisingGlass.wav"},
+    {key = "alertdangertrill", label = "Dyre's Alerts: Danger trill", pick = "AlertDangerTrill.wav"},
+    {key = "alertclarinet", label = "Dyre's Alerts: Clarinet danger chord", pick = "AlertClarinet.wav"},
+    {key = "alertspooky", label = "Dyre's Alerts: Spooky", pick = "AlertSpooky.wav"},
+    {key = "alertshake", label = "Dyre's Alerts: Cartoon shake", pick = "AlertShake.wav"},
+    {key = "alertangrybird", label = "Dyre's Alerts: Angry bird", pick = "AlertAngryBird.wav"},
+    {key = "alertmagpie", label = "Dyre's Alerts: Magpie", pick = "AlertMagpie.wav"},
+    {key = "alertbirdcrow", label = "Dyre's Alerts: Bird crowing", pick = "AlertBirdCrow.wav"},
+    {key = "alertselect", label = "Dyre's Alerts: Cartoon select", pick = "AlertSelect.wav"},
+    {key = "alertbubble", label = "Dyre's Alerts: Bubble", pick = "AlertBubble.wav"},
+    {key = "alertcomputer", label = "Dyre's Alerts: Computer", pick = "AlertComputer.wav"},
+    {key = "alertsteeldrum", label = "Dyre's Alerts: Steel drum", pick = "AlertSteelDrum.wav"},
+    {key = "alertxylophone", label = "Dyre's Alerts: Xylophone", pick = "AlertXylophone.wav"},
     -- The client's interface sounds, by SOUNDKIT name, then the Cooldown
     -- Manager's alert sounds by kit ID in its categories, generated from the
     -- pinned Blizzard_CooldownViewer/CooldownViewerSoundAlertData.lua (as in
