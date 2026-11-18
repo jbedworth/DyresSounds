@@ -115,7 +115,7 @@ test("Dyre's Picks come first, then the game's groups; keys are unique", functio
     equal(#lib.Groups()[3].sounds, 5, "Dyre's Cats")
     equal(#lib.Groups()[4].sounds, 5, "Dyre's Bears")
     equal(#lib.Groups()[5].sounds, 4, "Dyre's Water")
-    equal(#lib.Groups()[6].sounds, 11, "Dyre's Aggression")
+    equal(#lib.Groups()[6].sounds, 25, "Dyre's Aggression: 11 shouts, 10 roars, 4 screams (1.6.0)")
     equal(#lib.Groups()[7].sounds, 7, "Dyre's Gore")
     equal(#lib.Groups()[8].sounds, 4, "Dyre's Smacks")
     equal(#lib.Groups()[9].sounds, 3, "Dyre's Blades")
@@ -128,7 +128,7 @@ test("Dyre's Picks come first, then the game's groups; keys are unique", functio
         equal(seen[sound.key], nil, "unique key " .. sound.key)
         seen[sound.key] = true
     end
-    equal(#lib.List(), 76 + 15 + 9 + 13 + 1, "a SOUNDKIT name the client lacks, and the kit IDs (off for now), are left out")
+    equal(#lib.List(), 76 + 15 + 9 + 13 + 1 + 14, "a SOUNDKIT name the client lacks, and the kit IDs (off for now), are left out")
 end)
 test("without a voice there is no Text to Speech", function()
     local lib = fixture().lib
@@ -183,7 +183,7 @@ test("aura sounds are files only: names for Dyre's Picks, IDs for game files", f
     equal(lib.AuraSound("hellishimp1").soundFileID, 1281685)
     equal(lib.AuraSound("talent"), nil, "a sound kit cannot be an aura sound")
     equal(lib.AuraSound("voice"), nil)
-    equal(#lib.List("aura"), 76 + 13 + 15)
+    equal(#lib.List("aura"), 76 + 13 + 15 + 14)
     equal(names(lib.Groups("aura")), "Dyre's Picks,Dyre's Speed,Dyre's Cats,Dyre's Bears,Dyre's Water,Dyre's Aggression,Dyre's Gore,Dyre's Smacks,Dyre's Blades,Dyre's Sax,Dyre's Bassoon,Dyre's Fel Sounds,Dyre's Alerts,Imp,Hellish imp")
 end)
 test("on Classic Era and Anniversary, only sounds the client plays are offered", function()
@@ -247,7 +247,7 @@ test("a dropdown gets the plain list and the nested menu; other dropdowns keep t
     local state = fixture()
     local lib = state.lib
     local choices = lib.Choices("aura")()
-    equal(#choices, 89 + 15)
+    equal(#choices, 89 + 15 + 14)
     equal(choices[1].label, "Dyre's Picks: Fading slow disappear")
     local value = "magical"
     local setting = {GetValue = function() return value end, SetValue = function(_, v) value = v end}

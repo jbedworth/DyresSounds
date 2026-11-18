@@ -59,6 +59,23 @@ ns.CATALOG = {
     {key = "angryscream", label = "Dyre's Aggression: Angry scream", pick = "AngryScream.wav"},
     {key = "orcangry", label = "Dyre's Aggression: Angry orc", pick = "OrcAngry.wav"},
     {key = "orcfury", label = "Dyre's Aggression: Orc spitting fury", pick = "OrcSpittingFury.wav"},
+    -- Roaring Man, the mad man scream, and the girl screams (1.6.0; the same Envato license):
+    -- one sound per source file, trimmed to 5 ms before it, with a 50 ms
+    -- fade out; levels as supplied.
+    {key = "roaringman1", label = "Dyre's Aggression: Roaring-Man-1", pick = "RoaringMan1.wav"},
+    {key = "roaringman2", label = "Dyre's Aggression: Roaring-Man-2", pick = "RoaringMan2.wav"},
+    {key = "roaringman3", label = "Dyre's Aggression: Roaring-Man-3", pick = "RoaringMan3.wav"},
+    {key = "roaringman4", label = "Dyre's Aggression: Roaring-Man-4", pick = "RoaringMan4.wav"},
+    {key = "roaringman5", label = "Dyre's Aggression: Roaring-Man-5", pick = "RoaringMan5.wav"},
+    {key = "roaringman6", label = "Dyre's Aggression: Roaring-Man-6", pick = "RoaringMan6.wav"},
+    {key = "roaringman7", label = "Dyre's Aggression: Roaring-Man-7", pick = "RoaringMan7.wav"},
+    {key = "roaringman8", label = "Dyre's Aggression: Roaring-Man-8", pick = "RoaringMan8.wav"},
+    {key = "roaringman9", label = "Dyre's Aggression: Roaring-Man-9", pick = "RoaringMan9.wav"},
+    {key = "roaringman10", label = "Dyre's Aggression: Roaring-Man-10", pick = "RoaringMan10.wav"},
+    {key = "madmanscream", label = "Dyre's Aggression: Mad man warrior scream", pick = "MadManWarriorScream.wav"},
+    {key = "girlscream1", label = "Dyre's Aggression: Girl screaming 1", pick = "GirlScream1.wav"},
+    {key = "girlscream2", label = "Dyre's Aggression: Girl screaming 2", pick = "GirlScream2.wav"},
+    {key = "girlscream3", label = "Dyre's Aggression: Girl screaming 3", pick = "GirlScream3.wav"},
     -- Crit sounds (1.2.0; the same Envato license), for Dyre's Crit Mayhem's
     -- themes: gore, cartoon smacks and kisses, and blades.
     {key = "goreslice", label = "Dyre's Gore: Slice", pick = "GoreSlice.wav"},

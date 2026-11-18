@@ -4,6 +4,11 @@ Player-facing changes for each Dyre's Sounds release, newest first. The
 release builder copies the section for the TOC version into the GitHub release
 notes and the CurseForge changelog, and fails if that section is missing.
 
+## 1.6.0
+
+### Features
+- **Dyre's Aggression:** 10 new roars of an angry man, Roaring-Man-1 to Roaring-Man-10, from long roars to short barks, a mad man's warrior scream, and 3 screams of a girl.
+
 ## 1.5.0
 
 ### Features

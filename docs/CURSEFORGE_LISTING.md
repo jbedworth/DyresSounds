@@ -23,7 +23,7 @@ The sounds and sound picker that Dyre's AddOns share, for World of Warcraft: For
 ### What it has
 - **Dyre's Picks:** nine effect sounds that ship with it, first in every sound menu.
 - **Dyre's Speed, Dyre's Cats, Dyre's Bears, and Dyre's Water:** 22 more, by theme: speed boosts and engines for travel spells, and meows, growls, roars, and splashes for the Druid's forms.
-- **Dyre's Aggression:** 11 battle cries and shouts, for Charge and other Warrior moves.
+- **Dyre's Aggression:** 11 battle cries and shouts, for Charge and other Warrior moves, 10 roars of an angry man, a mad man's warrior scream, and 3 screams of a girl.
 - **Dyre's Gore, Dyre's Smacks, and Dyre's Blades:** 14 crit sounds, from slices and splats to slaps, kisses, and sword swings.
 - **Dyre's Sax:** an alto sax scale, eight notes from B-flat up to the octave, for chimes that count up.
 - **Dyre's Bassoon:** a quick comic bassoon climb, eight rising steps, for chimes that count up.
