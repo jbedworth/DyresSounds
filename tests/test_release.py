@@ -20,6 +20,8 @@ import warnings
 import zipfile
 from pathlib import Path
 
+from media_stubs import write_stubs
+
 
 ROOT = Path(__file__).resolve().parent.parent
 BUILDER_PATH = ROOT / "scripts" / "build_release.py"
@@ -42,9 +44,7 @@ class ReleaseTests(unittest.TestCase):
             (self.source / name).write_bytes((ROOT / name).read_bytes().replace(b"\r\n", b"\n"))
         for name in builder.RUNTIME_FILES:
             (self.source / name).write_bytes(b"local _, ns = ...\n")
-        for name in builder.MEDIA_FILES:
-            (self.source / name).parent.mkdir(parents=True, exist_ok=True)
-            (self.source / name).write_bytes((ROOT / name).read_bytes())
+        write_stubs(self.source, builder.MEDIA_FILES)
         (self.source / builder.CHANGELOG_NAME).write_bytes(
             (ROOT / builder.CHANGELOG_NAME).read_bytes().replace(b"\r\n", b"\n"))
         self.version = builder._validate_files(self.files())

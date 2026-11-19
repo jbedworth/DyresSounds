@@ -20,6 +20,8 @@ from email.parser import BytesParser
 from pathlib import Path
 from unittest import mock
 
+from media_stubs import write_stubs
+
 
 ROOT = Path(__file__).resolve().parent.parent
 # Match direct script execution without depending on tests being a package.
@@ -48,9 +50,7 @@ class CurseForgeTests(unittest.TestCase):
         (source / "LICENSE").write_bytes(builder.LICENSE_NOTICE.encode("utf-8"))
         for name in builder.RUNTIME_FILES:
             (source / name).write_bytes(b"local _, ns = ...\n")
-        for name in builder.MEDIA_FILES:
-            (source / name).parent.mkdir(parents=True, exist_ok=True)
-            (source / name).write_bytes((ROOT / name).read_bytes())
+        write_stubs(source, builder.MEDIA_FILES)
         (source / builder.CHANGELOG_NAME).write_bytes(
             f"## {version}\n\n- Test change.\n".encode("utf-8"))
         self.dist = self.base / "dist"

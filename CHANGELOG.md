@@ -4,10 +4,13 @@ Player-facing changes for each Dyre's Sounds release, newest first. The
 release builder copies the section for the TOC version into the GitHub release
 notes and the CurseForge changelog, and fails if that section is missing.
 
-## 1.7.0
+## 1.7.1
 
 ### Features
 - **Dyre's Frosty:** 14 frost sounds: 5 ice spells, 5 frozen whooshes, and 4 ice ball impacts, for Mage frost procs and frozen or chilled targets.
+
+### Other changes
+- The release tests run in seconds, not minutes. The 1.7.0 build stopped at its time limit, so 1.7.0 was not released.
 
 ## 1.6.0
 

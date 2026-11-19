@@ -8,6 +8,8 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
+from media_stubs import write_stubs
+
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 import build_release
@@ -35,9 +37,7 @@ class ProvenanceTests(unittest.TestCase):
         for name in build_release.RUNTIME_FILES:
             (source / name).write_text("local value = true\n", encoding="utf-8", newline="\n")
         (source / "LICENSE").write_text(build_release.LICENSE_NOTICE + "\n", encoding="utf-8", newline="\n")
-        for name in build_release.MEDIA_FILES:
-            (source / name).parent.mkdir(parents=True, exist_ok=True)
-            (source / name).write_bytes((ROOT / name).read_bytes())
+        write_stubs(source, build_release.MEDIA_FILES)
         (source / build_release.CHANGELOG_NAME).write_text(
             "## 1.2.3-beta\n\n- Test change.\n", encoding="utf-8", newline="\n")
         self.dist = root / "dist"
