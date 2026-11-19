@@ -291,7 +291,7 @@ class ReleaseTests(unittest.TestCase):
         "AlertBellBuzz.wav", "AlertCarSiren.wav", "AlertRisingGlass.wav", "AlertDangerTrill.wav",
         "AlertClarinet.wav", "AlertSpooky.wav", "AlertShake.wav", "AlertAngryBird.wav", "AlertMagpie.wav",
         "AlertBirdCrow.wav", "AlertSelect.wav", "AlertBubble.wav", "AlertComputer.wav", "AlertSteelDrum.wav",
-        "AlertXylophone.wav")))
+        "AlertXylophone.wav", "FrostyIceSpell1.wav", "FrostyIceSpell2.wav", "FrostyIceSpell3.wav", "FrostyIceSpell4.wav", "FrostyIceSpell5.wav", "FrostyIceWhoosh1.wav", "FrostyIceWhoosh2.wav", "FrostyIceWhoosh3.wav", "FrostyIceWhoosh4.wav", "FrostyIceWhoosh5.wav", "FrostyIceBallImpact1.wav", "FrostyIceBallImpact2.wav", "FrostyIceBallImpact3.wav", "FrostyIceBallImpact4.wav")))
         path, _ = self.build()
         with zipfile.ZipFile(path) as archive:
             self.assertIn("DyresSounds/Sounds/FadingSlowDisappear.mp3", archive.namelist())

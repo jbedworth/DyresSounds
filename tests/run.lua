@@ -108,7 +108,7 @@ test("the library is the global DyresSounds behind a contract", function()
 end)
 test("Dyre's Picks come first, then the game's groups; keys are unique", function()
     local lib = fixture({voice = true}).lib
-    equal(names(lib.Groups()), "Dyre's Picks,Dyre's Speed,Dyre's Cats,Dyre's Bears,Dyre's Water,Dyre's Aggression,Dyre's Gore,Dyre's Smacks,Dyre's Blades,Dyre's Sax,Dyre's Bassoon,Dyre's Fel Sounds,Dyre's Alerts,Interface,"
+    equal(names(lib.Groups()), "Dyre's Picks,Dyre's Speed,Dyre's Cats,Dyre's Bears,Dyre's Water,Dyre's Aggression,Dyre's Gore,Dyre's Smacks,Dyre's Blades,Dyre's Sax,Dyre's Bassoon,Dyre's Fel Sounds,Dyre's Alerts,Dyre's Frosty,Interface,"
         .. "Imp,Hellish imp,Text to Speech")
     equal(#lib.Groups()[1].sounds, 9)
     equal(#lib.Groups()[2].sounds, 8, "Dyre's Speed")
@@ -123,12 +123,13 @@ test("Dyre's Picks come first, then the game's groups; keys are unique", functio
     equal(#lib.Groups()[11].sounds, 8, "Dyre's Bassoon")
     equal(#lib.Groups()[12].sounds, 4, "Dyre's Fel Sounds")
     equal(#lib.Groups()[13].sounds, 15, "Dyre's Alerts")
+    equal(#lib.Groups()[14].sounds, 14, "Dyre's Frosty")
     local seen = {}
     for _, sound in ipairs(lib.List()) do
         equal(seen[sound.key], nil, "unique key " .. sound.key)
         seen[sound.key] = true
     end
-    equal(#lib.List(), 76 + 15 + 9 + 13 + 1 + 14, "a SOUNDKIT name the client lacks, and the kit IDs (off for now), are left out")
+    equal(#lib.List(), 76 + 15 + 9 + 13 + 1 + 14 + 14, "a SOUNDKIT name the client lacks, and the kit IDs (off for now), are left out")
 end)
 test("without a voice there is no Text to Speech", function()
     local lib = fixture().lib
@@ -183,8 +184,8 @@ test("aura sounds are files only: names for Dyre's Picks, IDs for game files", f
     equal(lib.AuraSound("hellishimp1").soundFileID, 1281685)
     equal(lib.AuraSound("talent"), nil, "a sound kit cannot be an aura sound")
     equal(lib.AuraSound("voice"), nil)
-    equal(#lib.List("aura"), 76 + 13 + 15 + 14)
-    equal(names(lib.Groups("aura")), "Dyre's Picks,Dyre's Speed,Dyre's Cats,Dyre's Bears,Dyre's Water,Dyre's Aggression,Dyre's Gore,Dyre's Smacks,Dyre's Blades,Dyre's Sax,Dyre's Bassoon,Dyre's Fel Sounds,Dyre's Alerts,Imp,Hellish imp")
+    equal(#lib.List("aura"), 76 + 13 + 15 + 14 + 14)
+    equal(names(lib.Groups("aura")), "Dyre's Picks,Dyre's Speed,Dyre's Cats,Dyre's Bears,Dyre's Water,Dyre's Aggression,Dyre's Gore,Dyre's Smacks,Dyre's Blades,Dyre's Sax,Dyre's Bassoon,Dyre's Fel Sounds,Dyre's Alerts,Dyre's Frosty,Imp,Hellish imp")
 end)
 test("on Classic Era and Anniversary, only sounds the client plays are offered", function()
     for _, project in ipairs({2, 5}) do
@@ -247,7 +248,7 @@ test("a dropdown gets the plain list and the nested menu; other dropdowns keep t
     local state = fixture()
     local lib = state.lib
     local choices = lib.Choices("aura")()
-    equal(#choices, 89 + 15 + 14)
+    equal(#choices, 89 + 15 + 14 + 14)
     equal(choices[1].label, "Dyre's Picks: Fading slow disappear")
     local value = "magical"
     local setting = {GetValue = function() return value end, SetValue = function(_, v) value = v end}
@@ -267,7 +268,7 @@ test("a dropdown gets the plain list and the nested menu; other dropdowns keep t
     equal(blizzard, 1)
     local root = menuRoot()
     state.inserted.inserter(setting, root)
-    equal(names(root.entries), "Dyre's Picks,Dyre's Speed,Dyre's Cats,Dyre's Bears,Dyre's Water,Dyre's Aggression,Dyre's Gore,Dyre's Smacks,Dyre's Blades,Dyre's Sax,Dyre's Bassoon,Dyre's Fel Sounds,Dyre's Alerts,Interface,"
+    equal(names(root.entries), "Dyre's Picks,Dyre's Speed,Dyre's Cats,Dyre's Bears,Dyre's Water,Dyre's Aggression,Dyre's Gore,Dyre's Smacks,Dyre's Blades,Dyre's Sax,Dyre's Bassoon,Dyre's Fel Sounds,Dyre's Alerts,Dyre's Frosty,Interface,"
         .. "Imp,Hellish imp")
     local picks = root.entries[1]
     equal(picks.entries[5].text, "Magical disappear", "names inside their group")
@@ -340,7 +341,7 @@ test("a checkbox row gets the nested sound menu, its full label, and no steppers
     equal(state.inserted.setting, setting)
     local root = menuRoot()
     state.inserted.inserter(setting, root)
-    equal(names(root.entries), "Dyre's Picks,Dyre's Speed,Dyre's Cats,Dyre's Bears,Dyre's Water,Dyre's Aggression,Dyre's Gore,Dyre's Smacks,Dyre's Blades,Dyre's Sax,Dyre's Bassoon,Dyre's Fel Sounds,Dyre's Alerts,Imp,Hellish imp", "the filter is kept")
+    equal(names(root.entries), "Dyre's Picks,Dyre's Speed,Dyre's Cats,Dyre's Bears,Dyre's Water,Dyre's Aggression,Dyre's Gore,Dyre's Smacks,Dyre's Blades,Dyre's Sax,Dyre's Bassoon,Dyre's Fel Sounds,Dyre's Alerts,Dyre's Frosty,Imp,Hellish imp", "the filter is kept")
     equal(dropdown.selectionFunc(), "Dyre's Picks: Magical disappear")
     equal(dropdown.updated, "menu", "the label is refreshed")
     equal(frame.Control.steppers, false, "no steppers through a menu of submenus")

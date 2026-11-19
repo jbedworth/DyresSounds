@@ -139,6 +139,26 @@ ns.CATALOG = {
     {key = "alertcomputer", label = "Dyre's Alerts: Computer", pick = "AlertComputer.wav"},
     {key = "alertsteeldrum", label = "Dyre's Alerts: Steel drum", pick = "AlertSteelDrum.wav"},
     {key = "alertxylophone", label = "Dyre's Alerts: Xylophone", pick = "AlertXylophone.wav"},
+    -- Frost sounds (1.7.0; the same Envato license), for Mage frost procs and
+    -- frozen or chilled targets: ice spells, frozen whooshes, and ice ball
+    -- impacts, one sound per source file, trimmed to 5 ms before it, with a
+    -- 50 ms fade out; a clip longer than 2.6 s (the impacts' long tails, three
+    -- whooshes) is cut there with a 400 ms fade, to fit WAV_MAX_BYTES.
+    -- Levels as supplied.
+    {key = "frostyicespell1", label = "Dyre's Frosty: Ice spell 1", pick = "FrostyIceSpell1.wav"},
+    {key = "frostyicespell2", label = "Dyre's Frosty: Ice spell 2", pick = "FrostyIceSpell2.wav"},
+    {key = "frostyicespell3", label = "Dyre's Frosty: Ice spell 3", pick = "FrostyIceSpell3.wav"},
+    {key = "frostyicespell4", label = "Dyre's Frosty: Ice spell 4", pick = "FrostyIceSpell4.wav"},
+    {key = "frostyicespell5", label = "Dyre's Frosty: Ice spell 5", pick = "FrostyIceSpell5.wav"},
+    {key = "frostyicewhoosh1", label = "Dyre's Frosty: Frozen whoosh 1", pick = "FrostyIceWhoosh1.wav"},
+    {key = "frostyicewhoosh2", label = "Dyre's Frosty: Frozen whoosh 2", pick = "FrostyIceWhoosh2.wav"},
+    {key = "frostyicewhoosh3", label = "Dyre's Frosty: Frozen whoosh 3", pick = "FrostyIceWhoosh3.wav"},
+    {key = "frostyicewhoosh4", label = "Dyre's Frosty: Frozen whoosh 4", pick = "FrostyIceWhoosh4.wav"},
+    {key = "frostyicewhoosh5", label = "Dyre's Frosty: Frozen whoosh 5", pick = "FrostyIceWhoosh5.wav"},
+    {key = "frostyiceballimpact1", label = "Dyre's Frosty: Ice ball impact 1", pick = "FrostyIceBallImpact1.wav"},
+    {key = "frostyiceballimpact2", label = "Dyre's Frosty: Ice ball impact 2", pick = "FrostyIceBallImpact2.wav"},
+    {key = "frostyiceballimpact3", label = "Dyre's Frosty: Ice ball impact 3", pick = "FrostyIceBallImpact3.wav"},
+    {key = "frostyiceballimpact4", label = "Dyre's Frosty: Ice ball impact 4", pick = "FrostyIceBallImpact4.wav"},
     -- The client's interface sounds, by SOUNDKIT name, then the Cooldown
     -- Manager's alert sounds by kit ID in its categories, generated from the
     -- pinned Blizzard_CooldownViewer/CooldownViewerSoundAlertData.lua (as in

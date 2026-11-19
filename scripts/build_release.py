@@ -128,7 +128,21 @@ MEDIA_FILES = ("Sounds/FadingSlowDisappear.mp3",
                "Sounds/AlertBubble.wav",
                "Sounds/AlertComputer.wav",
                "Sounds/AlertSteelDrum.wav",
-               "Sounds/AlertXylophone.wav")
+               "Sounds/AlertXylophone.wav",
+               "Sounds/FrostyIceSpell1.wav",
+               "Sounds/FrostyIceSpell2.wav",
+               "Sounds/FrostyIceSpell3.wav",
+               "Sounds/FrostyIceSpell4.wav",
+               "Sounds/FrostyIceSpell5.wav",
+               "Sounds/FrostyIceWhoosh1.wav",
+               "Sounds/FrostyIceWhoosh2.wav",
+               "Sounds/FrostyIceWhoosh3.wav",
+               "Sounds/FrostyIceWhoosh4.wav",
+               "Sounds/FrostyIceWhoosh5.wav",
+               "Sounds/FrostyIceBallImpact1.wav",
+               "Sounds/FrostyIceBallImpact2.wav",
+               "Sounds/FrostyIceBallImpact3.wav",
+               "Sounds/FrostyIceBallImpact4.wav")
 PACKAGE_FILES = TEXT_FILES + MEDIA_FILES
 TGA_HEADER_SIZE = 18
 TGA_TRUECOLOR = 2

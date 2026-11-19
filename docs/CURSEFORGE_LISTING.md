@@ -28,6 +28,7 @@ The sounds and sound picker that Dyre's AddOns share, for World of Warcraft: For
 - **Dyre's Sax:** an alto sax scale, eight notes from B-flat up to the octave, for chimes that count up.
 - **Dyre's Bassoon:** a quick comic bassoon climb, eight rising steps, for chimes that count up.
 - **Dyre's Alerts:** 15 warning sounds: alarms, danger stings, and cartoon and musical alerts, for threat warnings and other alerts.
+- **Dyre's Frosty:** 14 frost sounds: 5 ice spells, 5 frozen whooshes, and 4 ice ball impacts, for Mage frost procs and frozen or chilled targets.
 - **Dyre's Fel Sounds:** a heartbeat, a wet smash, a mud splat, and a deep demon growl, for dark crit themes.
 - The game's interface sounds, imp sounds, and Text to Speech.
 - A sound menu grouped by theme; choosing a sound plays it.
