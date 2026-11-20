@@ -59,8 +59,19 @@ local function fixture(options)
         end,
         InitDropdown = function(button, setting, inserter)
             state.inserted = {button = button, setting = setting, inserter = inserter}
+            state.inits = (state.inits or 0) + 1
         end,
     }
+    -- The client's secure hook: the original runs first, then the hook.
+    env.hooksecurefunc = function(object, name, hook)
+        local original = object[name]
+        object[name] = function(...)
+            local results = {original(...)}
+            hook(...)
+            return unpack(results)
+        end
+        state.hooks = (state.hooks or 0) + 1
+    end
     env.WOW_PROJECT_CLASSIC, env.WOW_PROJECT_BURNING_CRUSADE_CLASSIC = 2, 5
     env.WOW_PROJECT_ID = options.project or 1
     for _, name in ipairs(options.remove or {}) do env[name] = nil end
@@ -244,7 +255,31 @@ end)
 
 -- The menu --------------------------------------------------------------------------
 
-test("a dropdown gets the plain list and the nested menu; other dropdowns keep theirs", function()
+-- A pooled settings row frame as Blizzard's dropdown control builds it: its
+-- InitDropdown sets up the plain list (Settings.InitDropdown) for the row it
+-- draws now (GetElementData).
+local function dropdownFrame(state)
+    local frame = {Control = {Dropdown = {}}, blizzard = 0}
+    function frame:GetElementData() return self.row end
+    function frame:InitDropdown()
+        self.blizzard = self.blizzard + 1
+        state.env.Settings.InitDropdown(self.Control.Dropdown, nil, "plain")
+    end
+    return frame
+end
+
+-- A dropdown row's initializer: Blizzard's InitFrame draws it on a frame.
+local function dropdownRow(setting)
+    local initializer = {}
+    function initializer:GetSetting() return setting end
+    function initializer:InitFrame(frame)
+        frame.row = self
+        frame:InitDropdown()
+    end
+    return initializer
+end
+
+test("a dropdown gets the plain list and the nested menu, through secure hooks only", function()
     local state = fixture()
     local lib = state.lib
     local choices = lib.Choices("aura")()
@@ -252,20 +287,17 @@ test("a dropdown gets the plain list and the nested menu; other dropdowns keep t
     equal(choices[1].label, "Dyre's Picks: Fading slow disappear")
     local value = "magical"
     local setting = {GetValue = function() return value end, SetValue = function(_, v) value = v end}
-    local initializer = {data = nil}
-    function initializer:GetSetting() return setting end
-    function initializer:InitFrame(frame) frame.initialized = true end
+    local initializer = dropdownRow(setting)
+    local blizzardInitFrame = initializer.InitFrame
     lib.SetupMenu(initializer)
     equal(initializer.data.forceSteppersHidden, true, "no steppers through a menu of submenus")
-    equal(initializer.getSelectionTextFunc(), "Dyre's Picks: Magical disappear", "the full label shows")
-    local blizzard = 0
-    local frame = {SetupDropdownMenu = function() blizzard = blizzard + 1 end}
+    equal(initializer.getSelectionTextFunc, nil, "no function of ours is left on a pooled dropdown")
+    local frame = dropdownFrame(state)
+    local blizzardInitDropdown = frame.InitDropdown
     initializer:InitFrame(frame)
-    equal(frame.initialized, true)
-    frame.SetupDropdownMenu(nil, "button", setting, nil, nil, {})
-    equal(blizzard, 1, "another dropdown on the pooled control keeps Blizzard's menu")
-    frame.SetupDropdownMenu(nil, "button", setting, nil, nil, initializer)
-    equal(blizzard, 1)
+    equal(frame.blizzard, 1, "Blizzard's own setup still runs, first")
+    equal(state.inserted.button, frame.Control.Dropdown)
+    equal(type(state.inserted.inserter), "function", "then the nested menu replaces the plain list")
     local root = menuRoot()
     state.inserted.inserter(setting, root)
     equal(names(root.entries), "Dyre's Picks,Dyre's Speed,Dyre's Cats,Dyre's Bears,Dyre's Water,Dyre's Aggression,Dyre's Gore,Dyre's Smacks,Dyre's Blades,Dyre's Sax,Dyre's Bassoon,Dyre's Fel Sounds,Dyre's Alerts,Dyre's Frosty,Interface,"
@@ -275,29 +307,26 @@ test("a dropdown gets the plain list and the nested menu; other dropdowns keep t
     equal(picks.entries[5].isSelected("magical"), true)
     picks.entries[1].setSelected(picks.entries[1].data)
     equal(value, "fadingslow")
+    -- A value change sets the menu up again: the nested menu comes back.
+    frame:InitDropdown()
+    equal(type(state.inserted.inserter), "function")
+    -- Blizzard's own row on the same pooled frame keeps Blizzard's plain list.
+    frame.row = {}
+    frame:InitDropdown()
+    equal(state.inserted.inserter, "plain", "another row on the pooled frame keeps its own menu")
+    -- Drawn again on the same frame: hooked once, not twice.
+    local hooks = state.hooks
     initializer:InitFrame(frame)
-    frame.SetupDropdownMenu(nil, "button", setting, nil, nil, {})
-    equal(blizzard, 2, "wrapped once, even when the frame is reused")
+    equal(state.hooks, hooks + 0, "the frame is hooked once")
+    -- Nothing of ours is written on the pooled frame but the secure hook.
+    for key in pairs(frame) do
+        assert(key == "Control" or key == "blizzard" or key == "row" or key == "GetElementData"
+            or key == "InitDropdown", "unexpected field on the pooled frame: " .. tostring(key))
+    end
+    assert(frame.InitDropdown ~= blizzardInitDropdown, "InitDropdown is the secure hook's wrapper")
+    assert(initializer.InitFrame ~= blizzardInitFrame, "InitFrame is the secure hook's wrapper")
 end)
-test("a pooled dropdown frame that showed a sound never keeps its label for another dropdown", function()
-    local state = fixture()
-    local value = "magical"
-    local setting = {GetValue = function() return value end, SetValue = function(_, v) value = v end}
-    local initializer = {}
-    function initializer:GetSetting() return setting end
-    function initializer:InitFrame() end
-    state.lib.SetupMenu(initializer)
-    -- Blizzard's dropdown: it stores the selection text function and never clears it.
-    local dropdown = {}
-    function dropdown:SetSelectionText(selectionFunc) self.selectionFunc = selectionFunc end
-    local frame = {SetupDropdownMenu = function() end}
-    initializer:InitFrame(frame)
-    frame.SetupDropdownMenu(nil, dropdown, setting, nil, nil, initializer)
-    dropdown:SetSelectionText(initializer.getSelectionTextFunc)
-    equal(dropdown.selectionFunc(), "Dyre's Picks: Magical disappear", "the sound dropdown shows its full label")
-    frame.SetupDropdownMenu(nil, dropdown, {}, nil, nil, {})
-    equal(dropdown.selectionFunc, nil, "the next, plain dropdown on that frame does not show the sound's label")
-end)
+
 test("without the client's menu hooks the plain list stays", function()
     local state = fixture()
     state.env.Settings.InitDropdown = nil
@@ -308,33 +337,37 @@ test("without the client's menu hooks the plain list stays", function()
     local row = {InitFrame = function() end, data = {dropdownSetting = {}}}
     state.lib.SetupCheckboxMenu(row)
     equal(row.dyresSoundsMenu, nil, "a checkbox row keeps its plain list too")
+    local noHooks = fixture()
+    noHooks.env.hooksecurefunc = nil
+    local plain = {InitFrame = function() end}
+    noHooks.lib.SetupMenu(plain)
+    equal(plain.dyresSoundsMenu, nil, "no hooksecurefunc: the plain list")
 end)
 
 -- A checkbox-dropdown row as Blizzard's control builds it: Init initializes the
--- dropdown with the plain list; the dropdown stores its selection text function.
+-- dropdown with the plain list.
 local function checkboxRow(soundSetting)
     local initializer = {data = {dropdownSetting = soundSetting, dropDownLabel = "Sound"}}
     function initializer:InitFrame(frame) frame:Init(self) end
     local dropdown = {}
     function dropdown:SetSelectionText(selectionFunc) self.selectionFunc = selectionFunc end
-    function dropdown:GetMenuDescription() return "menu" end
-    function dropdown:UpdateToMenuSelections(menu) self.updated = menu end
     local frame = {Control = {Dropdown = dropdown}, inits = 0}
     function frame.Control:SetSteppersShown(shown) self.steppers = shown end
     function frame:Init(row)
         self.inits = self.inits + 1
-        if row.getSelectionTextFunc then dropdown:SetSelectionText(row.getSelectionTextFunc) end
         self.Control:SetSteppersShown(true)
     end
     return initializer, frame, dropdown
 end
 
-test("a checkbox row gets the nested sound menu, its full label, and no steppers", function()
+test("a checkbox row gets the nested sound menu and no steppers, through a secure hook", function()
     local state = fixture()
     local value = "magical"
     local setting = {GetValue = function() return value end, SetValue = function(_, v) value = v end}
     local row, frame, dropdown = checkboxRow(setting)
+    local blizzardInit = frame.Init
     state.lib.SetupCheckboxMenu(row, "aura")
+    equal(row.getSelectionTextFunc, nil, "no function of ours is left on a pooled dropdown")
     row:InitFrame(frame)
     equal(frame.inits, 1, "Blizzard's Init still runs")
     equal(state.inserted.button, dropdown, "the nested menu is built after Init")
@@ -342,24 +375,9 @@ test("a checkbox row gets the nested sound menu, its full label, and no steppers
     local root = menuRoot()
     state.inserted.inserter(setting, root)
     equal(names(root.entries), "Dyre's Picks,Dyre's Speed,Dyre's Cats,Dyre's Bears,Dyre's Water,Dyre's Aggression,Dyre's Gore,Dyre's Smacks,Dyre's Blades,Dyre's Sax,Dyre's Bassoon,Dyre's Fel Sounds,Dyre's Alerts,Dyre's Frosty,Imp,Hellish imp", "the filter is kept")
-    equal(dropdown.selectionFunc(), "Dyre's Picks: Magical disappear")
-    equal(dropdown.updated, "menu", "the label is refreshed")
     equal(frame.Control.steppers, false, "no steppers through a menu of submenus")
-end)
-test("a pooled checkbox row that showed a sound never keeps its label for another row", function()
-    local state = fixture()
-    local value = "magical"
-    local setting = {GetValue = function() return value end, SetValue = function(_, v) value = v end}
-    local row, frame, dropdown = checkboxRow(setting)
-    state.lib.SetupCheckboxMenu(row)
-    row:InitFrame(frame)
-    equal(dropdown.selectionFunc(), "Dyre's Picks: Magical disappear")
-    local plain = {data = {}}
-    frame:Init(plain)
-    equal(dropdown.selectionFunc, nil, "another AddOn's checkbox row on that frame shows its own choice")
-    row:InitFrame(frame)
-    frame:Init(plain)
-    equal(frame.inits, 4, "wrapped once, even when the frame is reused")
+    equal(dropdown.selectionFunc, nil, "no selection text function of ours")
+    equal(frame.Init, blizzardInit, "the pooled frame's Init is never replaced")
 end)
 
 local failed = 0

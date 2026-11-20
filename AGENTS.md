@@ -42,6 +42,17 @@ title: the folder, TOC, repository, and global use `DyresSounds`.
   dropdown, so the nested menu is built after it; pooled frames clear a stale
   sound label as plain dropdowns do; additive, so contract 1 stays). The filter
   "aura" keeps only file sounds, the only ones `C_UnitAuras.AddAuraSound` takes.
+- Taint rule for the menus (unreleased 1.7.2; a player's error, 2026-11-19:
+  Blizzard's Status Text setting failed with "attempt to compare a secret
+  number value (execution tainted by ...)"; John chose option A): settings
+  row frames are pooled and shared with Blizzard's own settings. Menu.lua
+  never replaces a method or writes a field on them, and leaves no function
+  of ours there (no `getSelectionTextFunc`, no `SetSelectionText`). It uses
+  `hooksecurefunc` only: on the initializer's `InitFrame`, and once per
+  pooled frame (a weak-keyed table) on `InitDropdown`; the nested menu is
+  rebuilt only while `frame:GetElementData()` is our row. The dropdown shows
+  the chosen sound's name, without its group. Without `hooksecurefunc` the
+  plain list stays. Not checked in client yet.
 
 ### The catalog
 

@@ -4,6 +4,11 @@ Player-facing changes for each Dyre's Sounds release, newest first. The
 release builder copies the section for the TOC version into the GitHub release
 notes and the CurseForge changelog, and fails if that section is missing.
 
+## 1.7.2
+
+### Fixes
+- **Game settings:** changing a Blizzard setting, such as Interface > Status Text, after you opened a Dyre's AddOns settings page no longer gives an "attempt to compare a secret number value" error. The sound menus no longer change the settings rows that Blizzard's own settings reuse. A sound dropdown now shows the sound's name without its group.
+
 ## 1.7.1
 
 ### Features
